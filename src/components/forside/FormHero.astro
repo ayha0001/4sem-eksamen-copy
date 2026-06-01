@@ -14,23 +14,23 @@ import Knap from "../generelt/Knap.astro";
   <div class='bg-secondary/30 absolute inset-0'></div>
 
   <!-- Hero tekst -->
-  <div class='absolute bottom-8 left-4 z-20 max-w-65 min-[1090px]:max-w-none lg:bottom-16 lg:left-14'>
-    <h2 class='font-visuals text-m-visuals text-background1 lg:text-visuals leading-[1.1] uppercase'>
+  <div class='absolute bottom-8 left-4 z-20 max-w-100 min-[1090px]:max-w-none lg:bottom-10 lg:left-10'>
+    <h2 class='font-visuals text-m-visuals text-background1 min-[1090px]:text-visuals leading-[1.1] uppercase'>
       Sammen hæver vi
       <br class='hidden lg:block' />
       <span class='text-primary'> livskvaliteten </span>
 
-      for <br /> udsatte mennesker
+      for <br class='hidden lg:block' /> udsatte mennesker
     </h2>
 
     <!-- Mobil knap -->
-    <div class='mt-5 lg:hidden'>
-      <Knap variant='primary2' href='/betaling' size='medium' class='w-full justify-center'>STØT NU </Knap>
+    <div class='mt-5 w-fit lg:hidden'>
+      <Knap variant='primary' href='/betaling' size='medium'> STØT NU </Knap>
     </div>
   </div>
 
   <!-- Desktop donation card -->
-  <div data-aos='fade-up' class='relative z-10 my-5 hidden h-[calc(100%-2rem)] items-center justify-center px-4 lg:flex lg:justify-end lg:pr-13'>
+  <div data-aos='fade-up' class='relative z-10 my-5 hidden h-[calc(100%-2rem)] items-center justify-center px-4 lg:flex lg:justify-end lg:pr-8'>
     <!-- Donation card -->
     <div class='bg-background1 py- w-full max-w-lg rounded px-6 shadow-xl lg:px-8 lg:py-6'>
       <!-- Inner width -->

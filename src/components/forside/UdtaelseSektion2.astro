@@ -1,8 +1,6 @@
 ---
 import TekstCenter from "../afsnit/TekstCenter.astro";
 import UdtalelseKort from "../udtalelser/UdtalelseKort.astro";
-import Deler from "../generelt/Deler.astro";
-import Knap from "../generelt/Knap.astro";
 ---
 
 <section class='mx-auto max-w-230 px-4'>
@@ -11,7 +9,7 @@ import Knap from "../generelt/Knap.astro";
     tekst='Gennem årene har vores arbejde været omtalt i medierne. Her kan du læse artikler og se indslag, der fortæller om vores indsats for mennesker i udsatte livssituationer.'
   />
 
-  <div class='grid grid-cols-2 gap-3 md:grid-cols-3'>
+  <div class='grid grid-cols-2 gap-3 pb-6 md:grid-cols-3 lg:pb-2'>
     <UdtalelseKort
       title='Tv2 Kosmopol'
       image='/assets/img/udtalelser/tv2kosmopol.webp'
@@ -41,9 +39,16 @@ import Knap from "../generelt/Knap.astro";
       href='https://politiken.dk/debat/debatindlaeg/art9395067/Stigmatiseringen-af-hjeml%C3%B8se-i-Danmark-er-blevet-ekstrem?fbclid=IwAR2uOMn7NYfaDMGq_mRMKDuvaop-L6pUgrSiaO67XHmL1B4cMpLBa8E9Feo'
       titleColor='text-secondary'
     />
-  </div>
-  <Deler ws='xs' />
-  <div class='text-center'>
-    <Knap variant='secondary' size='medium' href='/udtalelser'> Læs flere udtalelser </Knap>
+    <div class='md:hidden lg:hidden'>
+      <UdtalelseKort
+        title='Amager Liv'
+        image='/assets/img/udtalelser/amagerliv.webp'
+        alt='Amager Liv'
+        text='I juli 2023, startede vi med at uddele bind og tamponer på offentlige toiletter i København. Det har Amager Liv skrevet en artikel om.'
+        linkText='Læs artiklen her'
+        href='https://amagerliv.dk/amager/gratis-bind-og-tamponer-dukker-nu-op-paa-offentlige-toiletter-i-koebenhavn-snorre-og-daniel-har-taget-sagen-i-egen-haand?fbclid=IwAR0tFWj_j5iK0nV9LRdwyRAVKxCGAHXTNat8TFGZD7mVKoOtvg2p2qnF8D0'
+        titleColor='text-background1'
+      />
+    </div>
   </div>
 </section>

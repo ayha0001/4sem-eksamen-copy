@@ -2,11 +2,11 @@
 const { title, image, alt, text, linkText, href, titleColor } = Astro.props;
 ---
 
-<article class='group'>
+<article class='group h-full'>
   <a
     href={href}
     target='_blank'
-    class='group bg-background2 flex w-full flex-col overflow-hidden rounded transition duration-300 hover:-translate-y-1 hover:shadow-sm'
+    class='group bg-background2 flex h-full w-full flex-col overflow-hidden rounded transition duration-300 hover:-translate-y-1 hover:shadow-sm'
   >
     <!-- billede -->
     <figure class='relative'>
@@ -27,7 +27,7 @@ const { title, image, alt, text, linkText, href, titleColor } = Astro.props;
     </figure>
 
     <!-- tekst -->
-    <div class='flex min-h-42.5 flex-col px-3 pt-6 pb-5'>
+    <div class='flex flex-1 flex-col px-3 pt-6 pb-5'>
       <p class='text-p-small text-secondary pb-3 leading-[1.55]'>
         {text}
       </p>
@@ -40,5 +40,3 @@ const { title, image, alt, text, linkText, href, titleColor } = Astro.props;
     </div>
   </a>
 </article>
-
-

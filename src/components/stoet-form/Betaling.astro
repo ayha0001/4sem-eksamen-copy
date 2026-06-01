@@ -1,0 +1,157 @@
+---
+import Link from "../generelt/Link.astro";
+interface Props {
+  currentStep?: number;
+}
+
+const { currentStep = 3 } = Astro.props;
+---
+
+<section class="container mx-auto max-w-2xl px-4">
+  <!-- STEPS -->
+  <div class="font-body mx-auto mb-8 w-full max-w-sm lg:mb-10 lg:max-w-xl">
+    <!-- Tekst -->
+    <div class="text-secondary mb-3 flex justify-between">
+      <p>Vælg</p>
+      <p>Oplysninger</p>
+      <p>Betaling</p>
+      <p>Bekræftelse</p>
+    </div>
+
+    <!-- Linje + cirkler -->
+    <div class="relative flex items-center justify-between">
+      <!-- Linje -->
+      <div
+        class="bg-primary absolute top-1/2 right-0 left-0 h-0.5 -translate-y-1/2"
+      >
+      </div>
+
+      <!-- Cirkel 1 -->
+      <div
+        class:list={[
+          "text-p-small lg:text-m-p-small relative z-10 flex h-8 w-8 items-center justify-center rounded-full border lg:h-6 lg:w-6",
+          currentStep >= 1
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        1
+      </div>
+
+      <!-- Cirkel 2 -->
+      <div
+        class:list={[
+          "text-p-small lg:text-m-p-small relative z-10 flex h-8 w-8 items-center justify-center rounded-full border lg:h-6 lg:w-6",
+          currentStep >= 2
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        2
+      </div>
+
+      <!-- Cirkel 3 -->
+      <div
+        class:list={[
+          "text-p-small lg:text-m-p-small relative z-10 flex h-8 w-8 items-center justify-center rounded-full border lg:h-6 lg:w-6",
+          currentStep >= 3
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        3
+      </div>
+
+      <!-- Cirkel 4 -->
+      <div
+        class:list={[
+          "text-p-small lg:text-m-p-small relative z-10 flex h-8 w-8 items-center justify-center rounded-full border lg:h-6 lg:w-6",
+          currentStep >= 4
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        4
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYMENT CARD -->
+  <div
+    class="mt-ws-s bg-background2 font-body text-secondary mx-auto flex w-full max-w-md flex-col items-center rounded-2xl px-6 py-8 shadow-sm lg:px-10 lg:py-10"
+  >
+    <!-- Logo -->
+    <img
+      src="/assets/grafik/logo.svg"
+      alt="Hjælp Din Næste logo"
+      class="w-28 lg:w-32"
+    />
+
+    <!-- Navn -->
+    <h3
+      class="mt-ws-xs text-m-title3 text-secondary lg:text-title3 text-center font-semibold"
+    >
+      Hjælp Din Næste
+    </h3>
+
+    <!-- Beløb -->
+    <h3
+      class="font-h1 text-m-title1 text-primary lg:text-title2 mt-2 text-center uppercase"
+    >
+      299 DKK
+    </h3>
+
+    <!-- Telefonnummer -->
+    <label class="mt-ws-xs w-full">
+      <span
+        class="text-m-p-big text-secondary lg:text-p-big block pb-2 font-semibold"
+      >
+        Tlf nr.
+      </span>
+
+      <input
+        id="phone-input"
+        type="text"
+        inputmode="numeric"
+        placeholder="34566778"
+        maxlength="8"
+        required
+        pattern="[0-9]{8}"
+        class="border-secondary bg-background1 text-m-p-big lg:text-p-big focus:border-primary w-full rounded-md border px-5 py-3 outline-none"
+      />
+    </label>
+
+    <!-- Husk nummer -->
+    <div class="mt-ws-xs flex items-center justify-center">
+      <input
+        id="remember-phone"
+        type="checkbox"
+        name="remember-phone"
+        class="border-primary bg-background2 text-primary h-5 w-5 rounded border lg:h-6 lg:w-6"
+      />
+
+      <label
+        for="remember-phone"
+        class="text-m-p-big lg:text-p-big ml-3 select-none"
+      >
+        Husk mit nummer
+      </label>
+    </div>
+
+    <!-- Button -->
+    <Link href="/tak" variant="primary2" size="medium" class="mt-6 w-full">
+      Betal
+    </Link>
+  </div>
+</section>
+
+<script>
+  const phoneInput = document.getElementById("phone-input");
+
+  phoneInput?.addEventListener("input", (e) => {
+    const target = e.target as HTMLInputElement;
+
+    // Fjerner alt der ikke er tal
+    target.value = target.value.replace(/\D/g, "");
+  });
+</script>

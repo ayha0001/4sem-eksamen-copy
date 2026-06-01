@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import UdtalelseSektion from "../components/udtalelser/UdtalelseSektion.astro";
+import Deler from "../components/generelt/Deler.astro";
+import DelerStreg from "../components/generelt/DelerStreg.astro";
+import ProjektSektion from "../components/afsnit/ProjektSektion.astro";
+import TekstCenter from "../components/afsnit/TekstCenter.astro";
+---
+
+<Layout
+  pagetitle="Udtalelser"
+  description="Læs udtalelser om Hjælp Din Næste og se hvordan organisationens arbejde opleves gennem andres øjne."
+>
+  <HeroLille
+    titel="UDTALELSER"
+    billede="/assets/img/udt-hero.webp"
+    imageAlt="Presseomtale og udtalelser om Hjælp Din Næste"
+    farve="text-background1"
+  />
+  <Deler ws="m" />
+  <section data-aos="fade-up" data-aos-duration="500">
+    <TekstCenter
+      titel="Vil du læse mere om os?"
+      tekst="Vi sætter pris på, når andre er interesserede i hvad vi laver. Herunder kan du se og læse mere om vores organisation og arbejde - set gennem andres øjne. "
+    />
+    <Deler ws="xs" />
+    <UdtalelseSektion />
+    <Deler ws="xs" />
+  </section>
+  <DelerStreg src="/assets/grafik/divider_grey.svg" />
+  <ProjektSektion columns={2} />
+  <Deler ws="m" />
+  <FooterMedlem />
+</Layout>

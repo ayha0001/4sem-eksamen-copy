@@ -1,0 +1,31 @@
+---
+const { image, title = "Projekt", text, href = "#", imageAlt = title, class: extraClass = "" } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`group w-full overflow-hidden rounded-sm border border-background1 bg-background2 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md ${extraClass}`}
+>
+  <!-- billede -->
+  <div class='overflow-hidden'>
+    <img src={image} alt={imageAlt} class='h-56 w-full object-cover transition duration-500 group-hover:scale-105' />
+  </div>
+
+  <!-- tekst -->
+  <div class='font-body text-secondary flex min-h-55 flex-col p-6'>
+    <h3 class='font-body text-m-title3 lg:text-title3 mb-3 font-semibold'>
+      {title}
+    </h3>
+
+    <p class='text-m-p-big lg:text-p-big mb-6 leading-relaxed'>
+      {text}
+    </p>
+
+    <!-- link -->
+    <span class='text-m-p-big lg:text-p-big group-hover:text-primary mt-auto inline-flex items-center gap-2 transition-colors duration-300'>
+      Læs mere
+
+      <span class='font-semibold transition-all duration-300 ease-out group-hover:translate-x-1'> ➜ </span>
+    </span>
+  </div>
+</a>

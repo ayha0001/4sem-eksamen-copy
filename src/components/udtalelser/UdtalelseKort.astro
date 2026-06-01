@@ -1,0 +1,44 @@
+---
+const { title, image, alt, text, linkText, href, titleColor } = Astro.props;
+---
+
+<article class='group'>
+  <a
+    href={href}
+    target='_blank'
+    class='group bg-background2 flex w-full flex-col overflow-hidden rounded transition duration-300 hover:-translate-y-1 hover:shadow-sm'
+  >
+    <!-- billede -->
+    <figure class='relative'>
+      <div class='h-24 overflow-hidden'>
+        <img src={image} alt={alt} class='h-full w-full object-cover transition duration-500 group-hover:scale-105' />
+
+        <!-- mørk overlay -->
+        <div class='absolute inset-0 z-10 bg-black/20'></div>
+      </div>
+
+      <!-- overskrift -->
+      <h3 class={`absolute bottom-4 left-4 z-20 text-m-title3 md:text-title3 leading-none font-semibold ${titleColor}`}>
+        {title}
+      </h3>
+
+      <!-- rød divider -->
+      <img src='/assets/grafik/udtalelser-card-red-linje.svg' alt='' aria-hidden='true' class='absolute -bottom-2 left-0 z-30 w-full' />
+    </figure>
+
+    <!-- tekst -->
+    <div class='flex min-h-42.5 flex-col px-3 pt-6 pb-5'>
+      <p class='text-p-small text-secondary pb-3 leading-[1.55]'>
+        {text}
+      </p>
+
+      <span class='text-p-small text-secondary group-hover:text-primary mt-auto inline-flex items-center gap-2 transition-colors duration-300'>
+        {linkText}
+
+        <span class='font-semibold transition-all duration-300 ease-out group-hover:translate-x-1'> ➜ </span>
+      </span>
+    </div>
+  </a>
+</article>
+
+

@@ -1,0 +1,148 @@
+---
+//@ts-nocheck
+import Knap from "../generelt/Knap.astro";
+---
+
+<!-- Partnerformular sektion -->
+<section class='mx-auto max-w-230 px-4' data-aos='fade-up' data-aos-duration='500'>
+  <div class='mx-auto'>
+    <!-- overskrift -->
+    <div class='mb-6 max-w-2xl'>
+      <h2 class='font-body text-m-title2 lg:text-title2 mb-2 font-semibold'>Bliv partner</h2>
+
+      <p class='font-body text-m-p-big lg:text-p-big text-secondary leading-relaxed'>
+        Hvis du er interesseret kan du enten ringe til os på: +45 50 19 35 09 eller sende os en e-mail gennem formularen her. Vi vender typisk tilbage
+        samme dag!
+      </p>
+    </div>
+
+    <!-- formular -->
+    <form id='partnerForm' class='space-y-4'>
+      <!-- navn og email -->
+      <div class='grid gap-4 lg:grid-cols-2'>
+        <div>
+          <label for='name' class='font-body text-m-p-big lg:text-p-big text-secondary'>
+            Navn<span class='text-primary'>*</span>
+          </label>
+          <input
+            id='name'
+            name='name'
+            type='text'
+            placeholder='Indtast dit for- og efternavn'
+            required
+            class='border-secondary font-body text-secondary focus:border-primary mt-2 w-full rounded-sm border bg-transparent px-4 py-2 outline-none'
+          />
+        </div>
+
+        <div>
+          <label for='email' class='font-body text-m-p-big lg:text-p-big text-secondary'>
+            E-mail<span class='text-primary'>*</span>
+          </label>
+          <input
+            id='email'
+            name='email'
+            type='email'
+            placeholder='Indtast din e-mail'
+            required
+            class='border-secondary font-body text-secondary focus:border-primary mt-2 w-full rounded-sm border bg-transparent px-4 py-2 outline-none'
+          />
+        </div>
+      </div>
+
+      <!-- virksomhed -->
+      <div>
+        <label for='company' class='font-body text-m-p-big lg:text-p-big text-secondary'>
+          Virksomhed navn<span class='text-primary'>*</span>
+        </label>
+        <input
+          id='company'
+          name='company'
+          type='text'
+          placeholder='Indtast virksomhedens navn'
+          required
+          class='border-secondary font-body text-secondary focus:border-primary mt-2 w-full rounded-sm border bg-transparent px-4 py-2 outline-none'
+        />
+      </div>
+
+      <!-- besked -->
+      <div>
+        <label for='message' class='font-body text-m-p-big lg:text-p-big text-secondary'>
+          Meddelelse<span class='text-primary'>*</span>
+        </label>
+        <textarea
+          id='message'
+          name='message'
+          placeholder='Skriv din besked til os her'
+          required
+          class='border-secondary font-body text-secondary focus:border-primary mt-2 min-h-55 w-full resize-none rounded-sm border bg-transparent px-4 py-2 outline-none'
+        ></textarea>
+      </div>
+
+      <!-- Submit-knap og succesbesked -->
+      <div class='flex flex-col items-end gap-3'>
+        <Knap id='partnerSubmit' type='button' variant='secondary2' size='small'> INDSEND INFORMATIONER </Knap>
+
+        <p
+          id='successMessage'
+          class='font-body text-m-p-small lg:text-p-small text-secondary pointer-events-none opacity-0 transition-all duration-300 ease-out'
+        >
+          Dine informationer er sendt videre.
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  // Finder formularen ud fra dens id
+  const form = document.querySelector("#partnerForm") as HTMLFormElement;
+
+  // Finder knappen, som brugeren klikker på for at sende formularen
+  const submitButton = document.querySelector("#partnerSubmit");
+
+  // Finder beskeden, der skal vises når formularen er sendt korrekt
+  const successMessage = document.querySelector("#successMessage");
+
+  // Lytter efter klik på indsend-knappen
+  submitButton?.addEventListener("click", (event) => {
+    // Forhindrer browseren i at reloade siden eller sende formularen automatisk
+    event.preventDefault();
+
+    // Tjekker om alle obligatoriske felter er udfyldt korrekt
+    // fx navn, e-mail, virksomhed og besked
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      // Stopper funktionen, så resten af koden ikke kører
+      return;
+    }
+
+    // Nulstiller alle formularfelter, når formularen er godkendt
+    form.reset();
+
+    // Fjerner opacity-0, så succesbeskeden ikke længere er usynlig
+    successMessage?.classList.remove("opacity-0");
+
+    // Tilføjer opacity-100, så succesbeskeden bliver synlig
+    successMessage?.classList.add("opacity-100");
+
+    // Opretter en lydfil, som afspilles når formularen er sendt
+    const sound = new Audio("/assets/send.mp3");
+    // Afspiller send-lyden
+    sound.play();
+
+    // Fortæller TypeScript at submitButton er en HTMLButtonElement
+    const btn = submitButton as HTMLButtonElement;
+
+    // Deaktiverer knappen, så brugeren ikke kan sende formularen flere gange
+    btn.disabled = true;
+
+    // Ændrer cursoren for at vise, at knappen ikke længere kan klikkes på
+    btn.style.cursor = "not-allowed";
+
+    // Gør knappen mere gennemsigtig visuelt
+    btn.style.opacity = "0.6";
+
+    // Ændrer knappens tekst efter formularen er sendt
+    btn.textContent = "INDSENDT";
+  });
+</script>

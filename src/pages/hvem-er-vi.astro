@@ -1,0 +1,120 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import TekstCenter from "../components/afsnit/TekstCenter.astro";
+import AnsatSektion from "../components/om-os/AnsatSektion.astro";
+import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import Deler from "../components/generelt/Deler.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import Link from "../components/generelt/Link.astro";
+import DelerGraa from "../components/generelt/DelerGraa.astro";
+import IkonKort from "../components/afsnit/IkonKort.astro";
+import DelerStreg from "../components/generelt/DelerStreg.astro";
+---
+
+<Layout
+  pagetitle="Hvem er vi?"
+  description="Læs om Hjælp Din Næste, vores værdier, medarbejdere og mission om at skabe mere tryghed, ligeværdighed og gennemsigtighed."
+>
+  <HeroLille
+    titel="Hvem er vi?"
+    billede="/assets/img/hvemervi-hero.webp"
+    imageAlt="Frivillige og medarbejdere fra Hjælp Din Næste"
+    farve="text-background1"
+    billedePlacering="50% 36%"
+  />
+  <Deler ws="m" />
+
+  <TekstBillede
+    title="Derfor gør vi det, vi gør"
+    paragraphs={[
+      "Vi er en organisation, som hjælper hjemløse, udsatte og gadens folk, og vi kæmper hver dag for at hæve livskvaliteten, for alle dem som har brug for det. ",
+      "Siden vi blev stiftet i 2020, har vi haft en klar og ambitiøs drøm: at blive den mest gennemsigtige NGO i verden. Ikke som et slogan, men som en praksis. ",
+      "Vi tror på, at ærlig og konsekvent dokumentation af, hvordan vi bruger vores midler, er nøglen til tillid. Og uden tillid kan ingen NGO eksistere – hverken på kort eller lang sigt.",
+    ]}
+    image="/assets/img/hvemervi-1.webp"
+    imageAlt="Ansatte og frivilligholdet"
+    caption="Ansatte og frivilligholdet"
+    imageClass="h-72 w-full object-cover lg:h-96"
+  >
+    <Link href="/gennemsigtighed" variant="secondary" size="medium">
+      Det går din støtte til
+    </Link>
+  </TekstBillede>
+
+  <Deler ws="l" />
+
+  <DelerGraa>
+    <div class="mx-auto grid max-w-230 grid-cols-1 gap-1 px-2 md:grid-cols-3">
+      <!-- overskrift -->
+      <h2
+        class="font-visuals text-m-title1 md:text-visuals text-background1 -mb-2 text-center md:col-span-3"
+      >
+        Kerneværdier
+      </h2>
+
+      <IkonKort
+        billede="/assets/grafik/vanter.svg"
+        titel="Gennemsigtighed"
+        tekst="Vi viser åbent, hvor donationerne ender, og hvordan de bliver brugt. Gennemsigtighed skaber tillid og et stærkere fællesskab."
+        textColor="text-background1"
+        imageClass="hidden md:block"
+      />
+
+      <IkonKort
+        billede="/assets/grafik/hjerte-fyld-rød.svg"
+        titel="Tryghed"
+        tekst="Ved at hjælpe folk på gaden skaber vi relationer og tryghed. Derfor er vi til stede hver uge, når der er brug for os."
+        textColor="text-background1"
+      />
+
+      <IkonKort
+        billede="/assets/grafik/vanter.svg"
+        titel="Ligeværdighed"
+        tekst="Vi møder mennesker med respekt og forståelse. Ved at dele deres historier ønsker vi at nedbryde stigma og skabe mere menneskelighed."
+        textColor="text-background1"
+        imageClass="hidden md:block"
+      />
+    </div>
+  </DelerGraa>
+
+  <Deler ws="l" />
+  <section data-aos="fade-up" data-aos-duration="500">
+    <div class="mx-auto grid max-w-230 grid-cols-1 gap-1 px-2 md:grid-cols-3">
+      <!-- overskrift -->
+      <h2
+        class="text-m-title2 md:text-title2 mb-2 text-center font-semibold md:col-span-3"
+      >
+        Grundlaget for vores arbejde
+      </h2>
+      <IkonKort
+        billede="/assets/grafik/hh.svg"
+        titel="Formål"
+        tekst="Formålet med Hjælp Din Næste er at gøre livet bedre for folk som lever eller har levet på gaden gennem vores arbejde, som hviler på vores kerneværdier."
+      />
+
+      <IkonKort
+        billede="/assets/grafik/hjerte-fyld-rød.svg"
+        titel="Vision"
+        tekst="Vores vision med denne organisation er at hæve livskvaliteten og levestandarden, for alle mennesker i udsatte positioner"
+      />
+
+      <IkonKort
+        billede="/assets/grafik/mission.svg"
+        titel="Mission"
+        tekst="Vi tror på at vi kan gennemføre vores vision, ved at blive den mest gennemsigtige NGO i Danmark, og vise alle dem som støtter os, hvordan de mennesker vi hjælper får gavn af midlerne "
+      />
+    </div>
+  </section>
+  <Deler ws="m" />
+  <DelerStreg src="/assets/grafik/divider_red.svg" />
+  <Deler ws="m" />
+  <TekstCenter
+    titel="Holdet bag"
+    tekst="Hjælp Din Næstes hold består af en lønnet ledelse, som driver alt projekt, administration og fundraising samt et dedikeret frivillighold som muliggøre Projekt Nyt Hjem, Uddeling og Julegaveuddelinger. Ledelsen er primært dannet af organisationes stifter & medstiftere. Hjælp Din Næstes strategi er udarbejdet i samarbejde med bestyrelsen."
+  />
+
+  <AnsatSektion />
+  <Deler ws="m" />
+  <FooterMedlem />
+</Layout>

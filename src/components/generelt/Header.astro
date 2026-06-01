@@ -1,0 +1,517 @@
+---
+import Knap from "./Knap.astro";
+import Link from "./Link.astro";
+
+const {} = Astro.props;
+---
+
+<header id='site-header' class='bg-background1 fixed top-0 z-50 flex w-full flex-col shadow'>
+  <div class='flex w-full items-center px-6 py-4'>
+    <a href='/' class='inline-flex flex-shrink-0 items-center gap-4'>
+      <img src='/assets/grafik/logo_hænder.svg' alt='Logo' class='h-8' />
+      <span id='wordmark' class='font-wordmark text-primary text-m-visuals hidden font-semibold text-nowrap min-[1200px]:inline'>
+        HJÆLP DiN NÆSTE
+      </span>
+    </a>
+
+    <nav class='hidden w-full items-center justify-end gap-6 min-[1200px]:flex'>
+      <Link href='/' variant='headerlink-dropdown' size='medium' data-mega-trigger='projekter' aria-haspopup='true'> Projekter </Link>
+
+      <Link href='/' variant='headerlink-dropdown' size='medium' data-mega-trigger='omos' aria-haspopup='true'> Om os </Link>
+
+      <Link href='/bliv-frivillig' variant='headerlink' size='medium'>Bliv frivillig</Link>
+      <Link href='/partnere' variant='headerlink' size='medium'>Bliv partner</Link>
+      <Link href='/' variant='headerlink-dropdown' size='medium' data-mega-trigger='doner' aria-haspopup='true'> Donér </Link>
+      <Link href='/gennemsigtighed' variant='headerlink' size='medium'>Gennemsigtighed</Link>
+      <Link href='/kontakt-os' variant='headerlink' size='medium'>Kontakt os</Link>
+      <Knap href='/stoet-os' variant='primary' size='medium'>STØT NU</Knap>
+    </nav>
+
+    <!-- STØT NU button centered (mobile only) -->
+    <div id='center-button' class='flex hidden flex-1 justify-center max-[1149px]:flex'>
+      <Knap href='/betaling' variant='primary' size='medium'> STØT NU </Knap>
+    </div>
+
+    <!-- Burger menu toggle button (mobile only, pushed right) -->
+    <button
+      id='burger-toggle'
+      class='ml-auto flex hidden h-8 w-8 cursor-pointer items-center justify-center max-[1149px]:flex'
+      aria-label='Åbn menu'
+      aria-expanded='false'
+    >
+      <img id='burger-icon' src='/assets/grafik/burger-linje.svg' alt='' class='h-6 w-6 transition-opacity duration-300' />
+    </button>
+  </div>
+</header>
+<!-- Spacer to prevent content being hidden under fixed header -->
+<div class='block h-19 w-full max-[1199px]:h-16'></div>
+
+<!-- Mobile menu panel -->
+<div
+  id='mobile-menu'
+  class='bg-background1 fixed top-0 right-0 z-60 hidden h-screen w-screen translate-x-full transform overflow-y-auto transition-transform duration-300 max-[1149px]:block'
+>
+  <div class='flex flex-col gap-8 px-5 py-4'>
+    <!-- Mobile brand + close -->
+    <div class='flex items-center justify-between'>
+      <a href='/' class='inline-flex items-center gap-4'>
+        <img src='/assets/grafik/logo_hænder.svg' alt='Logo' class='h-8' />
+        <span class='font-wordmark text-primary text-m-visuals font-semibold text-nowrap'> HJÆLP DiN NÆSTE </span>
+      </a>
+      <button id='mobile-menu-close' class='flex h-8 w-8 items-center justify-center' aria-label='Luk menu'>
+        <img src='/assets/grafik/burger-linje-open.svg' alt='' class='h-6 w-6' />
+      </button>
+    </div>
+
+    <!-- Divider -->
+    <img src='/assets/grafik/deler-title.svg' alt='' class='w-75' />
+
+    <!-- Navigation items -->
+    <nav class='flex flex-col gap-6'>
+      <!-- Projekter with submenu -->
+      <div>
+        <button
+          class='mobile-submenu-toggle group text-secondary flex w-full items-center justify-between transition-opacity hover:opacity-70'
+          data-submenu='projekter-mobile'
+          aria-expanded='false'
+        >
+          <span class='text-p-big'>Projekter</span>
+          <svg
+            class='h-4 w-4 transition-transform duration-300 group-aria-expanded:rotate-180'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='2'
+            viewBox='0 0 24 24'
+            aria-hidden='true'
+          >
+            <path stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'></path>
+          </svg>
+        </button>
+        <div
+          id='projekter-mobile'
+          class='border-secondary/30 mt-0 flex max-h-0 flex-col gap-3 overflow-hidden border-l pl-4 opacity-0 transition-all duration-300'
+        >
+          <Link href='/uddelinger' variant='headerlink' size='small'>Uddelinger</Link>
+          <Link href='/baeredygtighed' variant='headerlink' size='small'>Bæredygtighed</Link>
+          <Link href='/nyt-hjem' variant='headerlink' size='small'>Nyt hjem</Link>
+          <Link href='/julegaveindsamling' variant='headerlink' size='small'>Julegaveindsamling</Link>
+        </div>
+      </div>
+
+      <!-- Om os with submenu -->
+      <div>
+        <button
+          class='mobile-submenu-toggle group text-secondary flex w-full items-center justify-between transition-opacity hover:opacity-70'
+          data-submenu='omos-mobile'
+          aria-expanded='false'
+        >
+          <span class='text-p-big'>Om os</span>
+          <svg
+            class='h-4 w-4 transition-transform duration-300 group-aria-expanded:rotate-180'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='2'
+            viewBox='0 0 24 24'
+            aria-hidden='true'
+          >
+            <path stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'></path>
+          </svg>
+        </button>
+        <div
+          id='omos-mobile'
+          class='border-secondary/30 mt-0 flex max-h-0 flex-col gap-3 overflow-hidden border-l pl-4 opacity-0 transition-all duration-300'
+        >
+          <Link href='/hvem-er-vi' variant='headerlink' size='small'>Hvem er vi?</Link>
+          <Link href='/faq' variant='headerlink' size='small'>FAQ</Link>
+          <Link href='/udtalelser' variant='headerlink' size='small'>Udtalelser</Link>
+        </div>
+      </div>
+
+      <Link href='/bliv-frivillig' variant='headerlink' size='medium'>Bliv frivillig</Link>
+      <Link href='/partnere' variant='headerlink' size='medium'>Bliv partner</Link>
+
+      <!-- Gennemsigtighed -->
+      <Link href='/gennemsigtighed' variant='headerlink' size='medium'>Gennemsigtighed</Link>
+
+      <!-- Donér with submenu -->
+      <div>
+        <button
+          class='mobile-submenu-toggle group text-secondary flex w-full items-center justify-between transition-opacity hover:opacity-70'
+          data-submenu='doner-mobile'
+          aria-expanded='false'
+        >
+          <span class='text-p-big'>Donér</span>
+          <svg
+            class='h-4 w-4 transition-transform duration-300 group-aria-expanded:rotate-180'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='2'
+            viewBox='0 0 24 24'
+            aria-hidden='true'
+          >
+            <path stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'></path>
+          </svg>
+        </button>
+        <div
+          id='doner-mobile'
+          class='border-secondary/30 mt-0 flex max-h-0 flex-col gap-3 overflow-hidden border-l pl-4 opacity-0 transition-all duration-300'
+        >
+          <Link href='/vaernemidler' variant='headerlink' size='small'>Værnemidler</Link>
+          <Link href='/testamente' variant='headerlink' size='small'>Testamente</Link>
+        </div>
+      </div>
+
+      <!-- Kontakt os -->
+      <Link href='/kontakt-os' variant='headerlink' size='medium'>Kontakt os</Link>
+    </nav>
+
+    <!-- Primary button -->
+    <div class='flex w-full flex-col pt-2'>
+      <Knap href='/stoet-os' variant='primary' size='medium'>STØT NU</Knap>
+    </div>
+
+    <!-- Social media -->
+    <div class='flex w-full flex-col items-center space-y-3 pt-6 text-center'>
+      <p class='font-body text-p-big text-primary font-medium'>Følg os på sociale medier</p>
+      <div class='flex justify-center gap-3'>
+        <a
+          href='https://www.facebook.com/HDN20/'
+          aria-label='Facebook'
+          target='_blank'
+          class='hover:bg-primary/10 flex h-8 w-8 items-center justify-center rounded-full transition-all hover:-translate-y-0.5'
+        >
+          <img src='/assets/grafik/some-ikon/Facebook-red 2.svg' alt='' class='h-8 w-8' />
+        </a>
+        <a
+          href='https://www.instagram.com/hjaelpdinnaeste/'
+          aria-label='Instagram'
+          target='_blank'
+          class='hover:bg-primary/10 flex h-8 w-8 items-center justify-center rounded-full transition-all hover:-translate-y-0.5'
+        >
+          <img src='/assets/grafik/some-ikon/Instagram-red.svg' alt='' class='h-8 w-8' />
+        </a>
+        <a
+          href='https://www.tiktok.com/@hjaelpdinnaeste'
+          aria-label='TikTok'
+          target='_blank'
+          class='hover:bg-primary/10 flex h-8 w-8 items-center justify-center rounded-full transition-all hover:-translate-y-0.5'
+        >
+          <img src='/assets/grafik/some-ikon/tiktok-red.svg' alt='' class='h-8 w-8' />
+        </a>
+        <a
+          href='https://www.linkedin.com/company/hjaelp-din-naeste/'
+          aria-label='LinkedIn'
+          target='_blank'
+          class='hover:bg-primary/10 flex h-8 w-8 items-center justify-center rounded-full transition-all hover:-translate-y-0.5'
+        >
+          <img src='/assets/grafik/some-ikon/Linkedin-red.svg' alt='' class='h-8 w-8' />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile menu overlay -->
+<div id='mobile-menu-overlay' class='bg-secondary/50 fixed inset-0 z-30 hidden transition-opacity duration-300'></div>
+
+<section
+  id='mega-menu'
+  class='bg-background1 pointer-events-none fixed top-0 left-0 z-40 hidden w-full overflow-hidden opacity-0 shadow-lg min-[1200px]:block'
+  style='max-height: 0; transition: max-height 0.4s ease, opacity 0.4s ease;'
+  aria-hidden='true'
+>
+  <!-- Secondary baseline streg -->
+  <div class='bg-secondary h-0.5 w-full'></div>
+  <!-- Primary indikator der slides under aktivt link -->
+
+  <div id='mega-indicator' class='bg-primary absolute top-0 h-0.5 transition-all duration-300' style='left: 0; width: 0;'></div>
+  <div data-mega-panel='projekter' class='hidden w-full grid-cols-4 gap-6 px-16 py-8'>
+    <div class='flex flex-col gap-2'>
+      <p class='text-m-title3 md:text-title3 font-medium'>Projekter</p>
+      <Link href='/uddelinger' variant='headerlink' size='medium'>Uddelinger</Link>
+      <Link href='/baeredygtighed' variant='headerlink' size='medium'>Bæredygtighed</Link>
+      <Link href='/nyt-hjem' variant='headerlink' size='medium'>Nyt hjem</Link>
+      <Link href='/julegaveindsamling' variant='headerlink' size='medium'>Julegaveindsamling</Link>
+    </div>
+    <div></div>
+    <div class='flex flex-col justify-center gap-3'>
+      <div class='font-visuals text-secondary text-[32px] leading-none'>Støt os</div>
+      <p class='text-secondary/80 max-w-xs text-sm'>Vil du bidrage til at vi kan hjælpe endnu flere udsatte? Støt os på knappen her</p>
+      <Link href='/vaernemidler' variant='textlink' size='small'>Værnemidler ➜</Link>
+      <Link href='/testamente' variant='textlink' size='small'>Testamente ➜</Link>
+      <Knap href='/stoet-os' variant='primary' size='medium'>STØT NU</Knap>
+    </div>
+    <div class='flex items-center justify-end'>
+      <img src='/assets/img/genm-2.webp' alt='Projekter' class='h-full w-full max-w-[320px] rounded object-cover' />
+    </div>
+  </div>
+
+  <div data-mega-panel='omos' class='hidden w-full grid-cols-4 gap-6 px-16 py-8'>
+    <div class='flex flex-col gap-2'>
+      <p class='text-m-title3 md:text-title3 font-medium'>Om os</p>
+      <Link href='/hvem-er-vi' variant='headerlink' size='medium'>Hvem er vi?</Link>
+      <Link href='/faq' variant='headerlink' size='medium'>FAQ</Link>
+      <Link href='/udtalelser' variant='headerlink' size='medium'>Udtalelser</Link>
+    </div>
+    <div></div>
+    <div class='flex flex-col justify-center gap-3'>
+      <div class='font-visuals text-secondary text-[32px] leading-none'>Støt os</div>
+      <p class='text-secondary/80 max-w-xs text-sm'>Vil du bidrage til at vi kan hjælpe endnu flere udsatte? Støt os på knappen her</p>
+      <Link href='/vaernemidler' variant='textlink' size='small'>Værnemidler ➜</Link>
+      <Link href='/testamente' variant='textlink' size='small'>Testamente ➜</Link>
+      <Knap href='/stoet-os' variant='primary' size='medium'>STØT NU</Knap>
+    </div>
+    <div class='flex items-center justify-end'>
+      <img src='/assets/img/genm-2.webp' alt='Projekter' class='h-full w-full max-w-[320px] rounded object-cover' />
+    </div>
+  </div>
+
+  <div data-mega-panel='doner' class='hidden w-full grid-cols-4 gap-6 px-16 py-8'>
+    <div class='flex flex-col gap-2'>
+      <p class='text-m-title3 md:text-title3 font-medium'>Donér</p>
+      <Link href='/vaernemidler' variant='headerlink' size='medium'>Værnemidler</Link>
+      <Link href='/testamente' variant='headerlink' size='medium'>Testamente</Link>
+    </div>
+    <div></div>
+    <div class='flex flex-col justify-center gap-3'>
+      <div class='font-visuals text-secondary text-[32px] leading-none'>Støt os</div>
+      <p class='text-secondary/80 max-w-xs text-sm'>Vil du bidrage til at vi kan hjælpe endnu flere udsatte? Støt os på knappen her</p>
+      <Link href='/vaernemidler' variant='textlink' size='small'>Værnemidler ➜</Link>
+      <Link href='/testamente' variant='textlink' size='small'>Testamente ➜</Link>
+      <Knap href='/stoet-os' variant='primary' size='medium'>STØT NU</Knap>
+    </div>
+    <div class='flex items-center justify-end'>
+      <img src='/assets/img/genm-2.webp' alt='Projekter' class='h-full w-full max-w-[320px] rounded object-cover' />
+    </div>
+  </div>
+</section>
+
+<script is:inline type='module'>
+  // Burger menu toggle
+  const burgerToggle = document.getElementById("burger-toggle");
+  const burgerIcon = document.getElementById("burger-icon");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+  const mobileMenuClose = document.getElementById("mobile-menu-close");
+  const centerButton = document.getElementById("center-button");
+  let isMobileMenuOpen = false;
+
+  const toggleMobileMenu = () => {
+    isMobileMenuOpen = !isMobileMenuOpen;
+
+    if (isMobileMenuOpen) {
+      // Show mobile menu
+      mobileMenu.classList.remove("translate-x-full");
+      mobileMenuOverlay.classList.remove("hidden");
+
+      // Hide center button
+      centerButton.classList.add("hidden");
+
+      // Animate burger icon
+      burgerIcon.style.opacity = "0";
+      setTimeout(() => {
+        burgerIcon.src = "/assets/grafik/burger-linje-open.svg";
+        burgerIcon.style.opacity = "1";
+      }, 150);
+
+      burgerToggle.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    } else {
+      // Hide mobile menu
+      mobileMenu.classList.add("translate-x-full");
+      mobileMenuOverlay.classList.add("hidden");
+
+      // Show center button
+      centerButton.classList.remove("hidden");
+
+      // Animate burger icon back
+      burgerIcon.style.opacity = "0";
+      setTimeout(() => {
+        burgerIcon.src = "/assets/grafik/burger-linje.svg";
+        burgerIcon.style.opacity = "1";
+      }, 150);
+
+      burgerToggle.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+  };
+
+  if (burgerToggle && burgerIcon && mobileMenu) {
+    burgerToggle.addEventListener("click", toggleMobileMenu);
+  }
+
+  // Close menu on overlay click
+  if (mobileMenuOverlay) {
+    mobileMenuOverlay.addEventListener("click", () => {
+      if (isMobileMenuOpen) toggleMobileMenu();
+    });
+  }
+
+  // Close menu on close button click
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener("click", () => {
+      if (isMobileMenuOpen) toggleMobileMenu();
+    });
+  }
+
+  // Submenu toggles
+  const submenuToggles = document.querySelectorAll(".mobile-submenu-toggle");
+
+  const openSubmenu = (submenu) => {
+    submenu.classList.remove("mt-0", "max-h-0", "opacity-0");
+    submenu.classList.add("mt-4", "opacity-100");
+    submenu.style.maxHeight = submenu.scrollHeight + "px";
+  };
+
+  const closeSubmenu = (submenu) => {
+    submenu.style.maxHeight = submenu.scrollHeight + "px";
+    requestAnimationFrame(() => {
+      submenu.classList.remove("mt-4", "opacity-100");
+      submenu.classList.add("mt-0", "max-h-0", "opacity-0");
+      submenu.style.maxHeight = "0px";
+    });
+  };
+
+  submenuToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      const submenuId = toggle.getAttribute("data-submenu");
+      const submenu = document.getElementById(submenuId);
+
+      if (submenu) {
+        const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!isExpanded));
+
+        if (isExpanded) {
+          closeSubmenu(submenu);
+        } else {
+          openSubmenu(submenu);
+        }
+      }
+    });
+  });
+
+  // Close menu when clicking on a link
+  const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+  mobileMenuLinks.forEach((link) => {
+    // Don't close for submenu toggle buttons or social links
+    if (!link.closest(".mobile-submenu-toggle") && link.target !== "_blank") {
+      link.addEventListener("click", () => {
+        if (isMobileMenuOpen) toggleMobileMenu();
+      });
+    }
+  });
+</script>
+
+<script is:inline type='module'>
+  const header = document.getElementById("site-header");
+  const megaMenu = document.getElementById("mega-menu");
+  const triggers = document.querySelectorAll("[data-mega-trigger]");
+  const panels = document.querySelectorAll("[data-mega-panel]");
+
+  if (header && megaMenu && triggers.length) {
+    const indicator = document.getElementById("mega-indicator");
+
+    const positionMegaMenu = () => {
+      const headerRect = header.getBoundingClientRect();
+      megaMenu.style.top = `${headerRect.bottom}px`;
+    };
+
+    positionMegaMenu();
+    window.addEventListener("resize", positionMegaMenu);
+
+    const showPanel = (key, triggerEl) => {
+      positionMegaMenu();
+      panels.forEach((panel) => panel.classList.add("hidden"));
+
+      const activePanel = document.querySelector(`[data-mega-panel="${key}"]`);
+
+      if (activePanel) {
+        activePanel.classList.remove("hidden");
+        activePanel.classList.add("grid");
+      }
+
+      // Markér aktiv trigger så Link-komponenten kan rotere pilen
+      triggers.forEach((trigger) => trigger.classList.remove("mega-open"));
+      if (triggerEl) {
+        triggerEl.classList.add("mega-open");
+      }
+
+      // Mål det faktiske indhold så animationen er præcis
+      megaMenu.style.maxHeight = megaMenu.scrollHeight + "px";
+      megaMenu.classList.remove("opacity-0", "pointer-events-none");
+      megaMenu.classList.add("opacity-100", "pointer-events-auto");
+      megaMenu.setAttribute("aria-hidden", "false");
+
+      if (indicator && triggerEl) {
+        const rect = triggerEl.getBoundingClientRect();
+        const headerRect = header.getBoundingClientRect();
+        indicator.style.left = rect.left - headerRect.left - 6 + "px";
+        indicator.style.width = rect.width + "px";
+      }
+    };
+
+    const hideMenu = () => {
+      megaMenu.style.maxHeight = "0";
+      megaMenu.classList.add("opacity-0", "pointer-events-none");
+      megaMenu.classList.remove("opacity-100", "pointer-events-auto");
+      megaMenu.setAttribute("aria-hidden", "true");
+      triggers.forEach((trigger) => trigger.classList.remove("mega-open"));
+      // Vent til animation er færdig før panels skjules
+      megaMenu.addEventListener(
+        "transitionend",
+        () => {
+          if (megaMenu.style.maxHeight === "0px" || megaMenu.style.maxHeight === "0") {
+            panels.forEach((panel) => panel.classList.add("hidden"));
+          }
+        },
+        { once: true },
+      );
+    };
+
+    let hideTimeout;
+
+    const scheduleHide = () => {
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        hideMenu();
+      }, 100); // 100ms buffer så man kan nå fra trigger til menu
+    };
+
+    const cancelHide = () => {
+      clearTimeout(hideTimeout);
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("mouseenter", () => {
+        showPanel(trigger.dataset.megaTrigger, trigger);
+        cancelHide();
+      });
+      trigger.addEventListener("focus", () => {
+        showPanel(trigger.dataset.megaTrigger, trigger);
+        cancelHide();
+      });
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+      });
+      trigger.addEventListener("mouseleave", scheduleHide);
+    });
+
+    // Luk menuen når man hover over links i NAV (topbar) som IKKE er dropdown-triggers
+    const nav = header.querySelector("nav");
+    if (nav) {
+      nav.querySelectorAll("a, button").forEach((el) => {
+        if (!el.dataset.megaTrigger) {
+          el.addEventListener("mouseenter", hideMenu);
+        }
+      });
+    }
+
+    // Hvis musen forlader header ELLER megamenu, så planlæg lukning
+    header.addEventListener("mouseleave", scheduleHide);
+    megaMenu.addEventListener("mouseleave", scheduleHide);
+    // Hvis musen går ind i header eller menu, annuller lukning
+    header.addEventListener("mouseenter", cancelHide);
+    megaMenu.addEventListener("mouseenter", cancelHide);
+  }
+</script>

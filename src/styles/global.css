@@ -1,0 +1,99 @@
+/* Importerer fonte fra Google Fonts og Adobe Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+@import url("https://use.typekit.net/kji8ugo.css");
+@import "tailwindcss";
+
+/* global variabler der bruges i hele projektet */
+/* defineres først i root, på den kan de bruges udenfor Tailwind også */
+/* i root defineres de og i theme bruges de */
+:root {
+  /* Primære farver */
+  --primary: #d52122;
+  --secondary: #232323;
+
+  /* Accent farver */
+  --accent-blue: #c7f9ff;
+  --accent-brown: #3c0304;
+
+  /* Baggrundsfarver og tekstfarver */
+  --background1: #f6f6f6;
+  --background2: #fbfbfb;
+}
+
+@theme {
+  /* 
+  @theme bruges til at oprette custom design tokens i Tailwind CSS.
+
+  Det gør, at vi kan definere vores egne:
+  - farver
+  - fonte
+  - tekststørrelser
+  - spacing værdier
+  som derefter automatisk kan bruges som utility classes i projektet.
+
+  Fx:
+  --color-primary → bg-primary
+  --text-title1 → text-title1
+
+  På den måde samles hele design systemet ét sted,
+  så styling bliver konsistent på tværs af hele websitet.
+
+  Uden theme, ville man ikke kunne bruge de custom variabler i Tailwind
+  */
+
+  /* Fonte */
+  --font-h1: "Anton", sans-serif;
+  --font-body: "Quicksand", sans-serif;
+  --font-visuals: "Permanent Marker", cursive;
+  --font-wordmark: "trade-gothic-next-compressed", sans-serif;
+
+  /* Farver til Tailwind theme */
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-brown: var(--accent-brown);
+  --color-background1: var(--background1);
+  --color-background2: var(--background2);
+
+  /* Desktop typografi */
+  --text-title1: 74px;
+  --text-title2: 36px;
+  --text-title3: 22px;
+  --text-header-big: 18px;
+  --text-header-small: 12px;
+  --text-p-big: 16px;
+  --text-p-small: 14px;
+  --text-visuals: 44px;
+
+  /* Mobil typografi */
+  --text-m-title1: 35px;
+  --text-m-title2: 24px;
+  --text-m-title3: 20px;
+  --text-m-p-big: 14px;
+  --text-m-p-small: 12px;
+  --text-m-visuals: 30px;
+
+  /* Desktop whitespace spacing */
+  --spacing-ws-xl: 200px;
+  --spacing-ws-l: 120px;
+  --spacing-ws-m: 75px;
+  --spacing-ws-s: 40px;
+  --spacing-ws-xs: 20px;
+
+  /* Mobil whitespace spacing */
+  --spacing-ws-m-xl: 100px;
+  --spacing-ws-m-l: 70px;
+  --spacing-ws-m-m: 30px;
+  --spacing-ws-m-s: 15px;
+  --spacing-ws-m-xs: 5px;
+}
+
+/* Standard styling for hele siden */
+body {
+  background-color: var(--background1);
+  font-family: var(--font-body);
+  color: var(--secondary);
+}

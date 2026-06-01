@@ -1,0 +1,74 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import FormPartner from "../components/partnere/FormPartner.astro";
+import Deler from "../components/generelt/Deler.astro";
+import PartnerBanner from "../components/partnere/PartnerBanner.astro";
+import PartnerSektion from "../components/partnere/PartnerSektion.astro";
+import PartnerSektion2 from "../components/partnere/PartnerSektion2.astro";
+import PartnerSektion3 from "../components/partnere/PartnerSektion3.astro";
+import DelerGraa from "../components/generelt/DelerGraa.astro";
+import IkonKort from "../components/afsnit/IkonKort.astro";
+---
+
+<Layout
+  pagetitle="Partnere"
+  description="Bliv partner med Hjælp Din Næste og vær med til at forbedre livskvaliteten for gadens folk gennem konkrete samarbejder."
+>
+  <HeroLille
+    titel="PARTNERE"
+    billede="/assets/img/part-hero.webp"
+    imageAlt="Herobillede om partnerskaber hos Hjælp Din Næste"
+    farve="text-background1"
+    billedePlacering="50% 46%"
+  />
+  <Deler ws="m" />
+  <TekstBillede
+    title="Vores partnere øger livskvaliteten for gadens folk"
+    paragraphs={[
+      "Hjælp Din Næste har en bred række af forskellige samarbejdspartnere. De støtter med forskellige midler i vores kamp i at forbedre levevilkårene for gadens folk. ",
+      "Alle partnere har det til fælles, at de ønsker at øge fokus på hjemløshed – og hvordan man kan hjælpe sine medmennekser. ",
+      "Hjælp Din Næste tror på, at vi sammen kan forbedre livet for alle gennem næstekærlighed og tryghed. Hvis du også vil være med til at opnå vores vision om at hæve livskvaliteten og levestandarden, for alle dem der lever på gaden, så bliv partner.",
+    ]}
+    image="/assets/img/part-1.webp"
+    imageAlt="Indkøb hos vores faste sponsor Rema Valby "
+    caption="Indkøb hos vores faste sponsor Rema 1000 Valby "
+    imageClass="h-130 w-full object-cover object-top"
+  />
+  <Deler ws="m" />
+  <DelerGraa>
+    <div class="mx-auto max-w-lg px-4">
+      <h2
+        class="font-visuals text-m-title1 md:text-visuals text-background1 -mb-2 text-center"
+      >
+        Vores mål
+      </h2>
+      <IkonKort
+        billede="/assets/grafik/hænder-rød.svg"
+        imageAlt="Hænderikon for partnerskabsmål"
+        tekst="“At hjælpe flere mennesker med
+færre nye ressourcer” Ved at prioritere genbrug frem for nyindkøb og basere vores arbejde på overskud frem for overforbrug."
+        textColor="text-background1"
+        imageSize="h-24 w-24"
+      />
+    </div>
+  </DelerGraa>
+  <Deler ws="m" />
+  <FormPartner />
+
+  <PartnerBanner text="Faste sponsorer" />
+  <Deler ws="m" />
+  <PartnerSektion />
+  <Deler ws="m" />
+  <PartnerBanner text="Erhverspartnere og støttere" />
+  <Deler ws="m" />
+  <PartnerSektion2 />
+  <Deler ws="m" />
+  <PartnerBanner text="Fonde" />
+  <Deler ws="m" />
+  <PartnerSektion3 />
+  <Deler ws="m" />
+  <FooterMedlem />
+</Layout>

@@ -1,0 +1,65 @@
+---
+// Props til komponenten
+interface Props {
+  titel: string;
+    // Valgfrit billede til hero-sektionen
+  billede?: string;
+  imageAlt?: string;
+    // Fallback baggrundsklasse hvis der ikke bruges billede
+  baggrund?: string;
+  farve: string;
+  billedePlacering?: string; // fx "50% 0%" (top), "50% 50%" (center), "50% 100%" (bottom)
+}
+
+// Henter props fra Astro
+// Hvis billedePlacering ikke sendes med bruges center-position som standard
+const {
+  titel,
+  billede,
+  imageAlt,
+  baggrund,
+  farve,
+  billedePlacering = "50% 50%",
+} = Astro.props;
+---
+
+{/* Hvis der ikke er et billede, bruges baggrundsklassen i stedet. */}
+<section
+  class={`relative h-34 w-full overflow-hidden md:h-58 ${!billede ? baggrund : ""}`}
+>
+  {/* Render kun <img>, når der faktisk er sendt en billede-prop ind. */}
+  {
+    billede && (
+              /* 
+          Hero billede:
+          - absolute inset-0 fylder hele sektionen
+          - objectPosition styrer fokuspunktet på billedet, baseret på billedePlacering-proppen
+        */
+      <img
+        src={billede}
+        alt={imageAlt ?? titel}
+        style={{ objectPosition: billedePlacering }}
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+        <div class="absolute inset-0 z-10 bg-black/50"></div>
+    )
+  }
+
+
+  <div
+    class="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center"
+  >
+    <h1
+      class={`font-h1 uppercase text-m-title1 leading-none md:text-title1 lg:text-title1 ${farve}`}
+    >
+      {titel}
+    </h1>
+
+    <img
+      src="/assets/grafik/deler-title.svg"
+      alt=""
+      aria-hidden="true"
+      class="mt-2 w-60 md:w-145"
+    />
+  </div>
+</section>

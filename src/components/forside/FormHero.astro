@@ -1,0 +1,161 @@
+---
+import Knap from "../generelt/Knap.astro";
+---
+
+<!-- Hero-sektionen fylder hele skærmens højde, minus headerens højde (64px) -->
+<section class='relative h-[calc(100vh-64px)] overflow-hidden md:h-[calc(100vh-64px)] lg:h-[calc(100vh-74px)]'>
+  <!-- Hero billede -->
+  <img
+    src='/assets/img/Hero.webp'
+    alt='Billede af en frivillig og en hjemløs som smiler sammen, taget af Hjælp Din Næste'
+    class='absolute inset-0 h-full w-full object-cover object-left lg:object-[center_80%]'
+  />
+  <!-- Overlay -->
+  <div class='bg-secondary/30 absolute inset-0'></div>
+
+  <!-- Hero tekst -->
+  <div class='absolute bottom-8 left-4 z-20 max-w-65 min-[1090px]:max-w-none lg:bottom-16 lg:left-14'>
+    <h2 class='font-visuals text-m-visuals text-background1 lg:text-visuals leading-[1.1] uppercase'>
+      Sammen hæver vi
+      <br class='hidden lg:block' />
+      <span class='text-primary'> livskvaliteten </span>
+
+      for <br /> udsatte mennesker
+    </h2>
+
+    <!-- Mobil knap -->
+    <div class='mt-5 lg:hidden'>
+      <Knap variant='primary2' href='/betaling' size='medium' class='w-full justify-center'>STØT NU </Knap>
+    </div>
+  </div>
+
+  <!-- Desktop donation card -->
+  <div data-aos='fade-up' class='relative z-10 my-5 hidden h-[calc(100%-2rem)] items-center justify-center px-4 lg:flex lg:justify-end lg:pr-13'>
+    <!-- Donation card -->
+    <div class='bg-background1 py- w-full max-w-lg rounded px-6 shadow-xl lg:px-8 lg:py-6'>
+      <!-- Inner width -->
+      <div class='mx-auto max-w-md'>
+        <!-- Title -->
+        <h1 class='font-h1 text-m-title1 text-secondary lg:text-title1 text-left leading-none uppercase'>Giv dit bidrag</h1>
+
+        <!-- Intro -->
+        <p class='font-body text-m-p-big text-secondary lg:text-p-big mt-4 leading-relaxed text-pretty'>
+          Så vi sammen kan gøre en forskel for mennesker i udsatte positioner.
+        </p>
+
+        <!-- Donationstype -->
+        <div class='mt-6'>
+          <p class='font-body text-m-p-big text-secondary lg:text-p-big mb-2 font-medium'>Vælg donationstype</p>
+
+          <div class='flex flex-col gap-2'>
+            <label class='font-body text-m-p-big text-secondary lg:text-p-big flex items-center gap-2'>
+              <input type='radio' name='donationstype' class='accent-primary h-5 w-5' />
+              Engangsdonation
+            </label>
+
+            <div class='flex flex-wrap gap-5'>
+              <label class='font-body text-m-p-big text-secondary lg:text-p-big flex items-center gap-2'>
+                <input type='radio' name='donationstype' class='accent-primary h-5 w-5' />
+                Månedligt medlemskab
+              </label>
+
+              <label class='font-body text-m-p-big text-secondary lg:text-p-big flex items-center gap-2'>
+                <input type='radio' name='donationstype' class='accent-primary h-5 w-5' />
+                Årligt medlemskab
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Betalingstype -->
+        <div class='mt-6'>
+          <p class='font-body text-m-p-big text-secondary lg:text-p-big mb-2 font-medium'>Vælg betalings type</p>
+
+          <div class='flex flex-wrap gap-6'>
+            <label class='font-body text-m-p-big text-secondary lg:text-p-big flex items-center gap-2'>
+              <input type='radio' name='betaling' class='accent-primary h-5 w-5' />
+              MobilePay
+            </label>
+
+            <label class='font-body text-m-p-big text-secondary lg:text-p-big flex items-center gap-2'>
+              <input type='radio' name='betaling' class='accent-primary h-5 w-5' />
+              Betalingskort
+            </label>
+          </div>
+        </div>
+
+        <!-- Oplysninger -->
+        <div>
+          <p class='text-m-p-big text-secondary lg:text-p-big mt-5 mb-3'>Vælg beløb</p>
+
+          <div class='grid grid-cols-3 gap-2'>
+            <label class='block cursor-pointer'>
+              <input type='radio' name='belob' value='89' checked class='peer sr-only' />
+              <span
+                class='border-secondary bg-background1 text-m-p-big text-secondary hover:bg-secondary peer-checked:bg-secondary lg:text-p-big peer-checked:text-background2 hover:text-background2 flex h-full min-h-11 items-center justify-center rounded-lg border px-4 py-2 text-center transition duration-200'
+              >
+                89 DKK
+              </span>
+            </label>
+
+            <label class='block cursor-pointer'>
+              <input type='radio' name='belob' value='149' class='peer sr-only' />
+              <span
+                class='border-secondary bg-background1 text-m-p-big text-secondary hover:bg-secondary peer-checked:bg-secondary lg:text-p-big peer-checked:text-background2 hover:text-background2 flex h-full min-h-11 items-center justify-center rounded-lg border px-4 py-2 text-center transition duration-200'
+              >
+                149 DKK
+              </span>
+            </label>
+
+            <label class='block cursor-pointer'>
+              <input type='radio' name='belob' value='299' class='peer sr-only' />
+              <span
+                class='border-secondary bg-background1 text-m-p-big text-secondary hover:bg-secondary hover:text-background2 peer-checked:bg-secondary peer-checked:text-background2 lg:text-p-big flex h-full min-h-11 items-center justify-center rounded-lg border px-4 py-2 text-center transition duration-200'
+              >
+                299 DKK
+              </span>
+            </label>
+          </div>
+
+          <input
+            id='custom-amount'
+            type='text'
+            name='andetbeloeb'
+            placeholder='Andet beløb'
+            inputmode='numeric'
+            class='border-secondary bg-background1 text-m-p-big text-secondary placeholder:text-secondary lg:text-p-big focus:ring-primary focus:border-primary mt-2 w-full rounded-md border px-4 py-2 text-center transition duration-200 hover:font-medium focus:outline-none'
+          />
+        </div>
+
+        <!-- Button -->
+        <div class='mt-3'>
+          <Knap href='/oplysninger-form' variant='primary' size='medium' fullWidth> STØT NU </Knap>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Finder custom amount input
+  const customAmountInput = document.querySelector("#custom-amount");
+
+  // Finder alle inputfelter som har name="beløb"
+  const amountRadios = document.querySelectorAll('input[name="belob"]');
+
+  // Når brugeren skriver i inputfeltet
+  customAmountInput?.addEventListener("input", (e) => {
+    const target = e.target as HTMLInputElement;
+
+    // Fjerner alt der ikke er tal
+    target.value = target.value.replace(/\D/g, "");
+
+    // Hvis der er skrevet noget i feltet
+    if (target.value.length > 0) {
+      // Fjern markering fra alle radio buttons
+      amountRadios.forEach((radio) => {
+        (radio as HTMLInputElement).checked = false;
+      });
+    }
+  });
+</script>

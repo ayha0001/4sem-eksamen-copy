@@ -1,0 +1,87 @@
+---
+// Astro-komponent til en slider med dragbar SVG i midten
+---
+
+<style>
+  /* Wrapper omkring hele slideren */
+  .slider-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  /* Fælles styling for begge billeder */
+  .slider-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    height: 100%;
+    transition: width 0.3s ease;
+    overflow: hidden;
+  }
+
+  /* Sørger for at billederne fylder hele området */
+  .slider-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Dragbaren i midten */
+  .slider-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 20px;
+    height: 100%;
+    background: url("/public/assets/grafik/pind.svg") no-repeat center;
+    background-size: contain;
+    cursor: ew-resize;
+    transform: translateX(-50%);
+  }
+</style>
+
+<div class='slider-container'>
+  <!-- Venstre billede -->
+  <div class='slider-image' id='left-image'>
+    <img src='/public/assets/img/nyt-hjem-1.jpg' alt='Venstre billede' />
+  </div>
+  <!-- Højre billede -->
+  <div class='slider-image' id='right-image' style='right: 0;'>
+    <img src='/public/assets/img/nyt-hjem-2.jpg' alt='Højre billede' />
+  </div>
+  <!-- Dragbar -->
+  <div class='slider-handle' id='slider-handle'></div>
+</div>
+
+<script>
+  const sliderHandle = document.getElementById("slider-handle");
+  const leftImage = document.getElementById("left-image");
+  const rightImage = document.getElementById("right-image");
+
+  let isDragging = false;
+
+  sliderHandle.addEventListener("mousedown", () => {
+    isDragging = true;
+  });
+
+  window.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+
+    const sliderContainer = document.querySelector(".slider-container");
+    const rect = sliderContainer.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+
+    leftImage.style.width = `${percentage}%`;
+    rightImage.style.width = `${100 - percentage}%`;
+    sliderHandle.style.left = `${percentage}%`;
+  });
+</script>

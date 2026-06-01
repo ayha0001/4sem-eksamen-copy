@@ -1,0 +1,68 @@
+---
+/* Prop til FAQ-titlen */
+const { titel = "Hvornår kan jeg aflevere tøj?" } = Astro.props;
+---
+
+<section class='bg-background1 mx-auto w-full max-w-230 px-4' data-aos='fade-left' data-aos-duration='500'>
+  <div data-faq-accordion class='w-full py-3'>
+    <!-- Knap der åbner/lukker FAQ-svaret -->
+    <button type='button' data-faq-trigger class='group flex w-full items-center justify-between gap-4 text-left' aria-expanded='false'>
+      <h3 class='text-m-title3 lg:text-title3 text-secondary transition-opacity duration-200 group-hover:opacity-50 hover:cursor-pointer'>
+        {titel}
+      </h3>
+
+      <!-- Plus/kryds ikon -->
+      <img src='/assets/grafik/faq-cross.svg' alt='Åbn svar' data-faq-icon class='h-6 w-6 flex-shrink-0 transition-transform duration-300' />
+    </button>
+
+    <!-- Separator linje -->
+    <div class='bg-secondary/80 mt-2 h-px w-full'></div>
+
+    <!-- Skjult svar-panel -->
+    <div data-faq-panel class='max-h-0 overflow-hidden transition-all duration-300' aria-hidden='true'>
+      <!-- Slot bruges til selve FAQ-svaret -->
+      <div class='text-m-p-big md:text-m-p-big text-secondary pt-3 pb-1 [&_li]:mb-1 [&_p]:mb-3 [&_ul]:my-3 [&_ul]:list-disc [&_ul]:pl-6'>
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  // Sikrer at accordion-scriptet kun bliver initialiseret én gang
+  if (!window.__faqAccordionInitialized) {
+    window.__faqAccordionInitialized = true;
+
+    // Lytter efter klik på hele dokumentet, og tjekker om det var på en FAQ-trigger-knap
+    document.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-faq-trigger]");
+      if (!trigger) return;
+
+      // Finder den accordion, som triggeren hører til
+      const accordion = trigger.closest("[data-faq-accordion]");
+      if (!accordion) return;
+
+      // Finder svar-panelet og ikonet inde i den aktuelle accordion
+      const panel = accordion.querySelector("[data-faq-panel]");
+      const icon = accordion.querySelector("[data-faq-icon]");
+      if (!panel || !icon) return;
+
+      // Tjekker om accordionen allerede er åben
+      const isOpen = trigger.getAttribute("aria-expanded") === "true";
+
+      // Opdaterer accessibility states
+      trigger.setAttribute("aria-expanded", String(!isOpen));
+      panel.setAttribute("aria-hidden", String(isOpen));
+
+      // Hvis den er åben, lukkes den
+      if (isOpen) {
+        panel.style.maxHeight = "0px";
+        icon.classList.remove("rotate-45");
+        // Hvis den er lukket, åbnes den
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        icon.classList.add("rotate-45");
+      }
+    });
+  }
+</script>

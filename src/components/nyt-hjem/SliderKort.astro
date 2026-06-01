@@ -1,0 +1,82 @@
+<section class='mx-auto max-w-230 px-4 lg:px-4' data-aos='fade-up' data-aos-duration='500'>
+  <h2 class='font-body text-m-title2 text-secondary lg:text-title2 mb-2 font-semibold'>Et nyt hjem bygget på genbrug</h2>
+  <p class='font-body text-m-p-big text-secondary lg:text-p-big max-w-prose space-y-5 leading-relaxed'>
+    I Projekt Nyt Hjem hjælper vi mennesker videre fra hjemløshed til egen bolig. De genbrugsmøbler vi benytter til Projekt Nyt Hjem får vi igennem
+    samarbejdspartnere, samt vores netværk på Facebook – her skriver vi borgerens ønsker op og derefter kan vores følgere byde ind med møbler de
+    ønsker at donere til det nye hjem.
+    <br />
+    <br />
+  </p>
+  <p class='font-body text-m-p-big text-secondary lg:text-p-big max-w-prose space-y-5 leading-relaxed'>
+    De få ting, vi ikke kan genbruge af hensyn til hygiejne og komfort, som fx madrasser, dyner, sengelinned og håndklæder, forsøger vi at skaffe
+    fra rest- og overskudslagre.
+    <br />
+    <br />
+  </p>
+  <p class='font-body text-m-p-big text-secondary lg:text-p-big max-w-prose space-y-5 leading-relaxed'>
+    Vi gør vores bedste for at balancere imellem at skaffe varme og rare hjem ved hjælp af genbrug samt at sørge for den sociale værdighed ved at
+    tilbyde nyindkøb til folk der ellers aldrig har fået lov til at købe lige den ting de ønsker sig til deres hjem.
+  </p>
+  <div class='slider-wrap relative mt-[20px]'>
+    <img
+      src='/assets/grafik/se-her.svg'
+      alt='Se her'
+      class='se-her-overlay pointer-events-none absolute right-0 bottom-[calc(100%+2rem)] z-20 h-[195px] w-auto'
+    />
+
+    <section class='slider-container relative h-140 w-full overflow-hidden rounded'>
+      <!-- Left Image -->
+      <div
+        class='slider-image left-image absolute inset-y-0 left-0 h-full w-full bg-cover bg-center'
+        style="background-image: url('/assets/img/nyt-hjem-1.webp'); clip-path: inset(0 50% 0 0);"
+      >
+      </div>
+
+      <!-- Right Image -->
+      <div
+        class='slider-image right-image absolute inset-y-0 left-0 h-full w-full bg-cover bg-center'
+        style="background-image: url('/assets/img/nyt-hjem-2.webp'); clip-path: inset(0 0 0 50%);"
+      >
+      </div>
+
+      <!-- Slider Handle -->
+      <div
+        class='slider-handle pointer-events-auto absolute inset-y-0 left-1/2 flex h-full w-14 -translate-x-1/2 cursor-ew-resize touch-none items-stretch justify-center select-none'
+        id='slider-handle'
+      >
+        <img class='slider-handle-img pointer-events-none block h-full w-auto' src='/assets/grafik/pind.svg' alt='Slider pind' />
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const sliderHandle = document.getElementById("slider-handle") as HTMLElement | null;
+    const leftImage = document.querySelector(".left-image") as HTMLElement | null;
+    const rightImage = document.querySelector(".right-image") as HTMLElement | null;
+    const sliderContainer = document.querySelector(".slider-container") as HTMLElement | null;
+
+    if (sliderHandle && leftImage && rightImage && sliderContainer) {
+      let isDragging = false;
+
+      sliderHandle.addEventListener("mousedown", () => {
+        isDragging = true;
+      });
+
+      window.addEventListener("mouseup", () => {
+        isDragging = false;
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+
+        const rect = sliderContainer.getBoundingClientRect();
+        const offsetX = e.clientX - rect.left;
+        const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+
+        leftImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+        rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+        sliderHandle.style.left = `${percentage}%`;
+      });
+    }
+  </script>
+</section>

@@ -1,0 +1,307 @@
+---
+import TekstCenter from "../afsnit/TekstCenter.astro";
+---
+
+<!-- Øverste tekstsektion over selve videoen. -->
+<TekstCenter
+  titel='Hør kort om hvem vi er'
+  tekst='Hør mere om os og vores arbejde i denne korte video, hvor vi fortæller om vores mission og hvordan du kan være med til at gøre en forskel for mennesker på gaden.'
+/>
+
+<!-- Ydre wrapper som centrerer indholdet og giver samme bredde som resten af siden. -->
+<div class='mx-auto max-w-230 px-4'>
+  <div class='border-secondary group relative overflow-hidden rounded border' data-motion-container>
+    <!--
+      Selve videoen.
+      data-motion-video bruges i JavaScript til at finde præcis dette element.
+      poster er thumbnail-billedet før videoen starter.
+
+      preload="metadata" betyder at browseren kun skal hente videoens metadata (fx længde), data-motion-video mærker videoen nemt, så scriptet kan benytte det. aria-labl er for accessibility for skærmlæsere.
+    -->
+    <video
+      class='h-auto w-full'
+      preload='metadata'
+      playsinline
+      poster='/assets/grafik/poster.webp'
+      data-motion-video
+      aria-label='Motion graphic video'
+    >
+      <source src='/assets/grafik/motiongraphic.mp4' type='video/mp4' />
+      Din browser understøtter ikke video-tagget.
+    </video>
+
+    <!--
+      Midter-ikonet er kun en visuel indikator.
+      Det er ikke klikbart, fordi vi i stedet bruger klik på hele videoen.
+    -->
+    <div
+      class='border-primary pointer-events-none absolute top-1/2 left-1/2 z-10 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-5 bg-white/90 transition-all duration-300 group-hover:scale-115 group-hover:bg-white'
+      aria-hidden='true'
+      data-motion-toggle
+    >
+      <img src='/assets/grafik/play.svg' alt='Play ikon' class='h-12 w-12' aria-hidden='true' data-motion-icon />
+    </div>
+
+    <!--
+      Mobil-knap til fullscreen.
+      md:hidden betyder at den kun vises under desktop-breakpointet.
+    -->
+    <button
+      type='button'
+      class='bg-secondary/85 text-background1 absolute right-3 bottom-6 z-20 grid h-10 w-10 place-items-center rounded-full md:hidden'
+      aria-label='Vis video i fuld skærm'
+      data-motion-fullscreen
+    >
+      <svg viewBox='0 0 24 24' class='h-5 w-5' fill='none' stroke='currentColor' stroke-width='2' aria-hidden='true'>
+        <path d='M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5' stroke-linecap='round' stroke-linejoin='round'></path>
+      </svg>
+    </button>
+
+    <!--
+      Wrapper til seekbaren nederst i videoen.
+      pointer-events-none på wrapperen gør, at kun selve input-elementet kan klikkes.
+      På desktop bliver den først synlig ved hover eller fokus.
+    -->
+    <div
+      class='pointer-events-none absolute inset-x-0 bottom-0 z-20 px-3 pb-3 md:opacity-0 md:transition-opacity md:duration-300 md:group-focus-within:opacity-100 md:group-hover:opacity-100'
+    >
+      <!--
+        type="range" fungerer som en slider.
+        Her bruger vi den som en custom progress/seekbar til videoen.
+      -->
+      <input
+        type='range'
+        min='0'
+        max='100'
+        value='0'
+        step='0.1'
+        class='motion-progress pointer-events-auto block h-1.5 w-full cursor-pointer appearance-none rounded-full [background:linear-gradient(to_right,var(--primary)_0%,var(--primary)_var(--progress-value),rgb(255_255_255_/_0.35)_var(--progress-value),rgb(255_255_255_/_0.35)_100%)]'
+        style='--progress-value: 0%;'
+        aria-label='Spol i video'
+        data-motion-progress
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  // Her finder vi alle de HTML-elementer vi skal arbejde med i JavaScript.
+  // querySelector leder efter første element der matcher selektoren.
+  const video = document.querySelector("[data-motion-video]");
+  const videoContainer = document.querySelector("[data-motion-container]");
+  const toggleButton = document.querySelector("[data-motion-toggle]");
+  const icon = document.querySelector("[data-motion-icon]");
+  const fullscreenButton = document.querySelector("[data-motion-fullscreen]");
+  const progressInput = document.querySelector("[data-motion-progress]");
+
+  // instanceof tjekker at elementerne faktisk er de typer vi forventer.
+  // Det gør koden mere sikker og hjælper TypeScript med at forstå elementerne.
+  if (
+    video instanceof HTMLVideoElement &&
+    videoContainer instanceof HTMLDivElement &&
+    toggleButton instanceof HTMLDivElement &&
+    icon instanceof HTMLImageElement &&
+    fullscreenButton instanceof HTMLButtonElement &&
+    progressInput instanceof HTMLInputElement
+  ) {
+    // Denne variabel bruges til at vide om brugeren lige nu er i gang med at trække i seekbaren.
+    // Mens man trækker, skal videoen ikke hele tiden overskrive sliderens position.
+    let isDraggingProgress = false;
+
+    // Viser play/pause-ikonet i midten.
+    const showButton = () => {
+      toggleButton.classList.remove("hidden");
+    };
+
+    // Skjuler play/pause-ikonet i midten.
+    const hideButton = () => {
+      toggleButton.classList.add("hidden");
+    };
+
+    // Skifter midter-ikonet til play.
+    const setPlayIcon = () => {
+      icon.src = "/assets/grafik/play.svg";
+    };
+
+    // Skifter midter-ikonet til pause.
+    const setPauseIcon = () => {
+      icon.src = "/assets/grafik/pause.svg";
+    };
+
+    // Opdaterer den røde del af seekbaren ved at sætte en CSS-variabel.
+    const updateProgressFill = (progressValue: number) => {
+      progressInput.style.setProperty("--progress-value", `${progressValue}%`);
+    };
+
+    // Når videoen spiller, opdaterer vi seekbaren så den matcher currentTime.
+    const syncProgressFromVideo = () => {
+      if (!Number.isFinite(video.duration) || video.duration <= 0 || isDraggingProgress) {
+        return;
+      }
+
+      const progressValue = (video.currentTime / video.duration) * 100;
+      progressInput.value = `${progressValue}`;
+      updateProgressFill(progressValue);
+    };
+
+    // Når brugeren flytter seekbaren, regner vi den om til et tidspunkt i videoen.
+    const syncVideoFromProgress = () => {
+      if (!Number.isFinite(video.duration) || video.duration <= 0) {
+        return;
+      }
+
+      const progressValue = Number(progressInput.value);
+      video.currentTime = (progressValue / 100) * video.duration;
+      updateProgressFill(progressValue);
+    };
+
+    // Forsøger at åbne fullscreen.
+    // iOS Safari bruger en speciel metode, så derfor tjekker vi den først.
+    const enterFullscreen = async () => {
+      const iosVideo = video as HTMLVideoElement & {
+        webkitEnterFullscreen?: () => void;
+      };
+      const canUseIOSFullscreen = typeof iosVideo.webkitEnterFullscreen === "function";
+
+      if (canUseIOSFullscreen) {
+        iosVideo.webkitEnterFullscreen?.();
+        return;
+      }
+
+      if (typeof video.requestFullscreen === "function") {
+        await video.requestFullscreen();
+        return;
+      }
+
+      if (typeof videoContainer.requestFullscreen === "function") {
+        await videoContainer.requestFullscreen();
+      }
+    };
+
+    // Klik på videoen toggler play/pause.
+    video.addEventListener("click", async () => {
+      if (video.paused || video.ended) {
+        try {
+          await video.play();
+          hideButton();
+        } catch {
+          setPlayIcon();
+          showButton();
+        }
+      } else {
+        video.pause();
+        setPauseIcon();
+        showButton();
+      }
+    });
+
+    // Når videoen starter, skjuler vi midter-ikonet.
+    video.addEventListener("play", hideButton);
+
+    // Når metadata er loaded, kender browseren fx videoens længde.
+    // Derfor kan vi først her være sikre på at seekbaren kan synces korrekt.
+    video.addEventListener("loadedmetadata", syncProgressFromVideo);
+
+    // timeupdate fyrer løbende mens videoen spiller.
+    video.addEventListener("timeupdate", syncProgressFromVideo);
+
+    // Hvis browseren ændrer den kendte varighed, synces progress igen.
+    video.addEventListener("durationchange", syncProgressFromVideo);
+
+    // Når videoen slutter, viser vi play-ikonet igen og sætter progress til 100%.
+    video.addEventListener("ended", () => {
+      setPlayIcon();
+      showButton();
+      progressInput.value = "100";
+      updateProgressFill(100);
+    });
+
+    // Brugeren begynder at trække i seekbaren.
+    progressInput.addEventListener("pointerdown", () => {
+      isDraggingProgress = true;
+    });
+
+    // Brugeren slipper seekbaren igen.
+    progressInput.addEventListener("pointerup", () => {
+      isDraggingProgress = false;
+      syncVideoFromProgress();
+    });
+
+    // input kører mens slideren bevæger sig.
+    progressInput.addEventListener("input", () => {
+      syncVideoFromProgress();
+    });
+
+    // change kører når slideren er færdig med at ændre værdi.
+    progressInput.addEventListener("change", () => {
+      isDraggingProgress = false;
+      syncVideoFromProgress();
+    });
+
+    // Fullscreen-knappen skal ikke også trigge videoens eget click-event.
+    // Derfor bruger vi stopPropagation().
+    fullscreenButton.addEventListener("click", async (event) => {
+      event.stopPropagation();
+
+      try {
+        await enterFullscreen();
+      } catch {
+        // Ignore fullscreen errors from unsupported browsers or blocked requests.
+      }
+    });
+
+    // Start-state når siden loader.
+    setPlayIcon();
+    showButton();
+    updateProgressFill(0);
+  }
+</script>
+
+<!--
+  Den lille style-blok er kun her fordi range-inputs er specielle.
+  Tailwind kan style selve input-elementet, men ikke alle browsernes interne
+  slider-dele direkte. Derfor bruges der lidt almindelig CSS herunder.
+-->
+<style>
+  /* Sporet bag thumb på Chrome/Safari. */
+  .motion-progress::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 9999px;
+    background: transparent;
+  }
+
+  /* Den lille runde "knop" man trækker i på Chrome/Safari. */
+  .motion-progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -5px;
+    height: 16px;
+    width: 16px;
+    border: 2px solid var(--background1);
+    border-radius: 9999px;
+    background: var(--primary);
+  }
+
+  /* Hele baggrundssporet på Firefox. */
+  .motion-progress::-moz-range-track {
+    height: 6px;
+    border-radius: 9999px;
+    background: rgb(255 255 255 / 0.35);
+  }
+
+  /* Den udfyldte del af sporet på Firefox. */
+  .motion-progress::-moz-range-progress {
+    height: 6px;
+    border-radius: 9999px;
+    background: var(--primary);
+  }
+
+  /* Den lille runde "knop" man trækker i på Firefox. */
+  .motion-progress::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border: 2px solid var(--background1);
+    border-radius: 9999px;
+    background: var(--primary);
+  }
+</style>

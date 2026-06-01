@@ -1,0 +1,189 @@
+---
+import Link from "../generelt/Link.astro";
+
+interface Props {
+  currentStep?: number;
+}
+
+const { currentStep = 1 } = Astro.props;
+---
+
+<section class='container mx-auto max-w-2xl px-4'>
+  <!-- STEPS -->
+  <div class='font-body mx-auto mb-8 w-full max-w-sm lg:mb-10 lg:max-w-xl'>
+    <!-- Tekst -->
+    <div class='text-m-p-small text-secondary lg:text-p-big mb-3 flex justify-between'>
+      <p>Vælg</p>
+      <p>Oplysninger</p>
+      <p>Betaling</p>
+      <p>Bekræftelse</p>
+    </div>
+
+    <!-- Linje + cirkler -->
+    <div class='relative flex items-center justify-between'>
+      <!-- Linje -->
+      <div class='bg-primary absolute top-1/2 right-0 left-0 h-0.5 -translate-y-1/2'></div>
+
+      <!-- Cirkel 1 -->
+      <div
+        class:list={[
+          "text-m-p-small lg:text-p-small relative z-10 flex h-6 w-6 items-center justify-center rounded-full border",
+          currentStep >= 1 ? "border-primary bg-primary text-background1" : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        1
+      </div>
+
+      <!-- Cirkel 2 -->
+      <div
+        class:list={[
+          "text-m-p-small lg:text-p-small relative z-10 flex h-6 w-6 items-center justify-center rounded-full border",
+          currentStep >= 2 ? "border-primary bg-primary text-background1" : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        2
+      </div>
+
+      <!-- Cirkel 3 -->
+      <div
+        class:list={[
+          "text-m-p-small lg:text-p-small relative z-10 flex h-6 w-6 items-center justify-center rounded-full border",
+          currentStep >= 3 ? "border-primary bg-primary text-background1" : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        3
+      </div>
+
+      <!-- Cirkel 4 -->
+      <div
+        class:list={[
+          "text-m-p-small lg:text-p-small relative z-10 flex h-6 w-6 items-center justify-center rounded-full border",
+          currentStep >= 4 ? "border-primary bg-primary text-background1" : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        4
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <form class='font-body mx-auto flex w-full max-w-xl flex-col gap-8'>
+    <!-- Vælg donationstype -->
+    <div>
+      <p class='text-m-p-big text-secondary lg:text-p-big mb-3'>Vælg donations type</p>
+
+      <div class='flex flex-wrap gap-x-6 gap-y-3'>
+        <label class='text-m-p-big text-secondary lg:text-p-big flex cursor-pointer items-center gap-2'>
+          <input type='radio' name='donationstype' value='engang' class='accent-primary h-6 w-6' />
+          Engangsdonation
+        </label>
+
+        <label class='text-m-p-big text-secondary lg:text-p-big flex cursor-pointer items-center gap-2'>
+          <input type='radio' name='donationstype' value='aarligt' checked class='accent-primary h-6 w-6' />
+          Årligt medlemskab
+        </label>
+
+        <label class='text-m-p-big text-secondary lg:text-p-big flex cursor-pointer items-center gap-2'>
+          <input type='radio' name='donationstype' value='maanedligt' class='accent-primary h-6 w-6' />
+          Månedligt medlemskab
+        </label>
+      </div>
+    </div>
+
+    <!-- Beløb -->
+    <div>
+      <p class='text-m-p-big text-secondary lg:text-p-big mb-3'>Vælg beløb</p>
+
+      <div class='grid grid-cols-3 gap-2'>
+        <label class='block cursor-pointer'>
+          <input type='radio' name='belob' value='89' checked class='peer sr-only' />
+          <span
+            class='border-secondary bg-background1 text-m-p-big text-secondary hover:bg-secondary peer-checked:bg-secondary lg:text-p-big peer-checked:text-background2 hover:text-background2 flex h-full min-h-12 items-center justify-center rounded-lg border px-4 py-3 text-center transition duration-200'
+          >
+            89 DKK
+          </span>
+        </label>
+
+        <label class='block cursor-pointer'>
+          <input type='radio' name='belob' value='149' class='peer sr-only' />
+          <span
+            class='border-secondary bg-background1 text-m-p-big text-secondary hover:bg-secondary peer-checked:bg-secondary lg:text-p-big peer-checked:text-background2 hover:text-background2 flex h-full min-h-12 items-center justify-center rounded-lg border px-4 py-3 text-center transition duration-200'
+          >
+            149 DKK
+          </span>
+        </label>
+
+        <label class='block cursor-pointer'>
+          <input type='radio' name='belob' value='299' class='peer sr-only' />
+          <span
+            class='border-secondary bg-background1 text-m-p-big text-secondary hover:bg-secondary hover:text-background2 peer-checked:bg-secondary peer-checked:text-background2 lg:text-p-big flex h-full min-h-12 items-center justify-center rounded-lg border px-4 py-3 text-center transition duration-200'
+          >
+            299 DKK
+          </span>
+        </label>
+      </div>
+
+      <input
+        id='amount-input'
+        type='text'
+        name='andetbeloeb'
+        placeholder='Andet beløb'
+        inputmode='numeric'
+        class='border-secondary bg-background1 text-m-p-big text-secondary placeholder:text-secondary lg:text-p-big focus:border-primary mt-2 w-full rounded-md border px-4 py-3 text-center outline-none'
+      />
+    </div>
+
+    <!-- Betalingstype -->
+    <div>
+      <p class='text-m-p-big text-secondary lg:text-p-big mb-3'>Vælg betalingstype</p>
+
+      <div class='flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6'>
+        <label class='text-m-p-big text-secondary lg:text-p-big flex cursor-pointer items-center gap-2'>
+          <input type='radio' name='payment' value='mobilepay' checked class='accent-primary h-6 w-6' />
+          MobilePay
+        </label>
+
+        <label class='text-m-p-big text-secondary lg:text-p-big flex cursor-pointer items-center gap-2'>
+          <input type='radio' name='payment' value='kort' class='accent-primary h-6 w-6' />
+          Betalingskort
+        </label>
+      </div>
+    </div>
+
+    <Link href='/oplysninger-form' variant='primary2' size='medium'> Videre </Link>
+  </form>
+</section>
+
+<script>
+  const amountInput = document.getElementById("amount-input");
+
+  amountInput?.addEventListener("input", (e) => {
+    const target = e.target as HTMLInputElement;
+
+    // Fjerner alt der ikke er tal
+    target.value = target.value.replace(/\D/g, "");
+  });
+</script>
+
+<script>
+  // Tager fat i inputfeltet via id
+  const amountInput = document.getElementById("amount-input");
+
+  // Finder alle radio buttons med definerede beløb
+  const amountRadios = document.querySelectorAll('input[name="belob"]');
+
+  amountInput?.addEventListener("input", (e) => {
+    const target = e.target as HTMLInputElement;
+
+    // Fjerner alt der ikke er tal
+    target.value = target.value.replace(/\D/g, "");
+
+    // Hvis brugeren skriver i inputfeltet
+    if (target.value.length > 0) {
+      // Fjern markering fra alle radio buttons
+      amountRadios.forEach((radio) => {
+        (radio as HTMLInputElement).checked = false;
+      });
+    }
+  });
+</script>

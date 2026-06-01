@@ -1,0 +1,40 @@
+---
+import Link from "../generelt/Link.astro";
+---
+
+<!-- Sektion -->
+<section class='bg-background1 relative h-100 w-full overflow-hidden'>
+  <!-- Baggrundsgrafik -->
+  <img src='/assets/grafik/citat-bg-rød.svg' alt='' aria-hidden='true' class='absolute inset-0 h-full w-full object-cover' />
+
+  <div class='relative mx-auto max-w-230 px-4 py-18'>
+    <!-- Grid layout -->
+    <div class='grid grid-cols-1 items-center gap-5 lg:grid-cols-[2fr_3fr]'>
+      <!-- Illustration -->
+      <div class='flex justify-center'>
+        <img
+          src='/assets/grafik/hus-hvid-hjerte.svg'
+          alt='lille hus med spørgsmåltegn i midten, som symboliserer søg hjælp'
+          class='w-18 object-contain lg:w-44'
+        />
+      </div>
+
+      <!-- Tekst -->
+      <div class='text-center lg:text-left'>
+        <!-- Overskrift -->
+        <h2 class='font-body text-m-title2 text-background1 lg:text-title2 leading-none font-semibold'>Søger du hjælp som tidligere hjemløs?</h2>
+
+        <!-- Beskrivelse -->
+        <p class='font-body text-m-p-big text-background1 lg:text-p-big mt-4 leading-relaxed'>
+          Send en mail til hdn@hjaelpdinnaeste.org med din kontaktperson fra kommunen, bosted eller lignende og en beskrivelse af din situation samt
+          hvad du mangler.
+        </p>
+
+        <!-- CTA knap -->
+        <div class='mt-6 flex justify-center lg:justify-start'>
+          <Link href='/kontakt-os' variant='secondary3' size='small'> Kontakt os </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

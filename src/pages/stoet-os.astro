@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import StoetForm from "../components/stoet-form/StoetForm.astro";
+import Deler from "../components/generelt/Deler.astro";
+---
+
+<Layout
+  pagetitle="Støt os"
+  description="Støt Hjælp Din Næste og vær med til at hjælpe hjemløse og udsatte med tøj, værnemidler, nye hjem og omsorg."
+>
+  <section class="min-h-screen p-4 lg:p-8">
+    <HeroLille titel="STØT OS" baggrund="bg-background1" farve="text-primary" />
+
+    <StoetForm currentStep={1} />
+    <Deler ws="m" />
+  </section>
+</Layout>

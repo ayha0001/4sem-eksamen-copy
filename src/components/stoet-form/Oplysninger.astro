@@ -1,0 +1,175 @@
+---
+import Link from "../generelt/Link.astro";
+
+interface Props {
+  currentStep?: number;
+}
+
+const { currentStep = 2 } = Astro.props;
+---
+
+<section class="container mx-auto max-w-2xl px-4">
+  <!-- STEPS -->
+  <div class="font-body mx-auto mb-8 w-full max-w-sm lg:mb-10 lg:max-w-xl">
+    <!-- Tekst -->
+    <div class="text-secondary mb-3 flex justify-between">
+      <p>Vælg</p>
+      <p>Oplysninger</p>
+      <p>Betaling</p>
+      <p>Bekræftelse</p>
+    </div>
+
+    <!-- Linje + cirkler -->
+    <div class="relative flex items-center justify-between">
+      <!-- Linje -->
+      <div
+        class="bg-primary absolute top-1/2 right-0 left-0 h-0.5 -translate-y-1/2"
+      >
+      </div>
+
+      <!-- Cirkel 1 -->
+      <div
+        class:list={[
+          "text-p-small lg:text-m-p-small relative z-10 flex h-8 w-8 items-center justify-center rounded-full border lg:h-6 lg:w-6",
+          currentStep >= 1
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        1
+      </div>
+
+      <!-- Cirkel 2 -->
+      <div
+        class:list={[
+          "text-p-small lg:text-m-p-small relative z-10 flex h-8 w-8 items-center justify-center rounded-full border lg:h-6 lg:w-6",
+          currentStep >= 2
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        2
+      </div>
+
+      <!-- Cirkel 3 -->
+      <div
+        class:list={[
+          "text-p-small lg:text-m-p-small relative z-10 flex h-8 w-8 items-center justify-center rounded-full border lg:h-6 lg:w-6",
+          currentStep >= 3
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        3
+      </div>
+
+      <!-- Cirkel 4 -->
+      <div
+        class:list={[
+          "text-p-small lg:text-m-p-small relative z-10 flex h-8 w-8 items-center justify-center rounded-full border lg:h-6 lg:w-6",
+          currentStep >= 4
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary",
+        ]}
+      >
+        4
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <form class="mx-auto flex w-full max-w-2xl flex-col gap-6">
+    <p class="text-m-p-big lg:text-p-big mt-6">Indtast dine oplysninger</p>
+
+    <!-- Inputs -->
+    <div class="flex flex-col gap-5">
+      <label class="text-m-p-big lg:text-p-big flex flex-col gap-2">
+        <span>
+          For- og efternavn
+          <span class="text-primary">*</span>
+        </span>
+
+        <input
+          type="text"
+          placeholder="Jens Jensen"
+          required
+          class="border-secondary bg-background1 text-m-p-big lg:text-p-big focus:border-primary w-full rounded-md border px-5 py-3 outline-none"
+        />
+      </label>
+
+      <label class="text-m-p-big lg:text-p-big flex flex-col gap-2">
+        <span>
+          E-mail
+          <span class="text-primary">*</span>
+        </span>
+
+        <input
+          type="email"
+          placeholder="jens@email.com"
+          required
+          class="border-secondary bg-background1 text-m-p-big lg:text-p-big focus:border-primary w-full rounded-md border px-5 py-3 outline-none"
+        />
+      </label>
+
+      <label class="text-m-p-big lg:text-p-big flex flex-col gap-2">
+        <span>
+          Telefon
+          <span class="text-primary">*</span>
+        </span>
+
+        <input
+          id="phone-input"
+          type="tel"
+          inputmode="numeric"
+          maxlength="8"
+          pattern="[0-9]{8}"
+          placeholder="34566778"
+          required
+          class="border-secondary bg-background1 text-m-p-big lg:text-p-big focus:border-primary w-full rounded-md border px-5 py-3 outline-none"
+        />
+      </label>
+    </div>
+
+    <!-- Checkboxes -->
+    <div class="mt-4 flex flex-col gap-4 rounded-md p-5">
+      <label
+        class="text-m-p-small text-secondary lg:text-p-big flex cursor-pointer items-start gap-3"
+      >
+        <input type="checkbox" class="accent-primary mt-1 h-5 w-5" />
+
+        <span> Ja tak, jeg ønsker skattefradrag </span>
+      </label>
+
+      <label
+        class="text-m-p-small text-secondary lg:text-p-big flex cursor-pointer items-start gap-3"
+      >
+        <input type="checkbox" required class="accent-primary mt-1 h-5 w-5" />
+
+        <span>
+          Jeg accepterer
+          <a href="#" class="text-primary font-semibold underline">
+            følgende betingelser
+          </a>
+          <span class="text-primary">*</span>
+        </span>
+      </label>
+
+      <label
+        class="text-m-p-small text-secondary lg:text-p-big flex cursor-pointer items-start gap-3"
+      >
+        <input type="checkbox" required class="accent-primary mt-1 h-5 w-5" />
+
+        <span>
+          Jeg har læst
+          <a href="#" class="text-primary font-semibold underline">
+            persondata
+          </a>
+          <span class="text-primary">*</span>
+        </span>
+      </label>
+    </div>
+
+    <!-- Button -->
+    <Link href="/betaling" variant="primary2" size="medium"> Videre </Link>
+  </form>
+</section>

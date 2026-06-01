@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import FormFrivillig from "../components/bliv-frivillig/FormFrivillig.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import IkonKort from "../components/afsnit/IkonKort.astro";
+import Deler from "../components/generelt/Deler.astro";
+import DelerStreg from "../components/generelt/DelerStreg.astro";
+import Galleri from "../components/bliv-frivillig/Galleri.astro";
+---
+
+<Layout
+  pagetitle="Bliv frivillig"
+  description="Bliv frivillig hos Hjælp Din Næste og gør en konkret forskel for hjemløse og udsatte gennem uddelinger, nye hjem og fællesskab."
+>
+  <HeroLille
+    titel="Bliv frivillig"
+    billede="/assets/img/blivf-hero.webp"
+    imageAlt="Frivillige samlet hos Hjælp Din Næste"
+    farve="text-background1"
+    billedePlacering="50% 48%"
+  />
+  <Deler ws="m" />
+  <TekstBillede
+    title="Hvad betyder det, og hvad kræver det at være frivillig hos os?"
+    paragraphs={[
+      "At være frivillig hos Hjælp Din Næste betyder meget mere, end man skulle tro. For folk på gaden er din indsats med til at skabe håb, varme og menneskelig kontakt. Vi kommer altid med godt humør, og det smitter. Vi møder alle med respekt, lytter til deres historier og deler også vores egne, for vi tror på, at man kommer længst med gensidig respekt.",
+
+      "Som frivillig bliver du en del af et fællesskab, der bygger på tryghed og gennemsigtighed. Vi er alle mennesker, og ved at være nærværende og til stede, kan vi møde hinanden i øjenhøjde. Hos os hjælper du udsatte og tidligere hjemløse gennem alt fra uddelinger af tøj og mad, til indflytninger i nye hjem og julegaveindsamlinger til herberger i hele landet.",
+    ]}
+    image="/assets/img/blivf-1.webp"
+    imageAlt="Frivillige efter et vellykket nyt hjem"
+    caption="Frivillige efter et vellykket nyt hjem"
+    imageClass="h-120 w-full object-cover object-center "
+  />
+  <Deler ws="m" />
+  <section class="mx-auto grid max-w-230 grid-cols-1 gap-6 px-4 md:grid-cols-3">
+    <h2
+      class="text-secondary col-span-full text-center text-2xl font-semibold"
+      data-aos="fade-up"
+      data-aos-duration="500"
+    >
+      Som frivillig hos os forventer vi
+    </h2>
+    <IkonKort
+      billede="/assets/grafik/hjerte-fyld-rød.svg"
+      titel="Passion for at hjælpe"
+      tekst="Du brænder for at gøre en forskel og ønsker at hjælpe nogle af samfundets mest sårbare."
+      data-aos="fade-up"
+    />
+    <IkonKort
+      billede="/assets/grafik/hjerte-fyld-rød.svg"
+      titel="Fast engagement"
+      tekst="Vi forventer, at du kan deltage i minimum to aktiviteter om måneden, som varer 3–6 timer."
+      data-aos="fade-up"
+    />
+    <IkonKort
+      billede="/assets/grafik/hjerte-fyld-rød.svg"
+      titel="Åbent fællesskab"
+      tekst="Vi tager altid varmt imod nye frivillige – alle er velkomne. OBS! Du skal være over 18 år og kunne tilgå Facebook."
+      data-aos="fade-up"
+    />
+  </section>
+  <Deler ws="s" />
+  <DelerStreg src="/assets/grafik/divider_grey.svg" />
+  <Deler ws="s" />
+  <FormFrivillig />
+  <DelerStreg src="/assets/grafik/divider_red.svg" />
+  <Galleri />
+  <Deler ws="m" />
+  <FooterMedlem />
+</Layout>

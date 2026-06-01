@@ -1,0 +1,21 @@
+---
+// Henter title-prop fra komponenten
+const { title } = Astro.props;
+---
+
+<div
+  class='bg-background2 border-background1 flex flex-1 flex-col justify-end rounded-t rounded-b border px-4 pt-4 pb-3 shadow-sm md:px-6 md:pb-6'
+  data-aos='fade-up'
+  data-aos-duration='500'
+>
+  <!-- Indholdet placeres nederst i kortet -->
+  <div class='flex flex-col items-start justify-end'>
+    <!-- Viser gruppens titel -->
+    <h2 class='text-secondary text-m-title2 md:text-title2 text-left leading-none font-bold'>
+      {title}
+    </h2>
+
+    <!-- Dekorativ rød streg under titlen -->
+    <img src='/assets/grafik/job-titel-streg-rød.svg' alt='' aria-hidden='true' class='mt-2 ml-auto w-46' />
+  </div>
+</div>

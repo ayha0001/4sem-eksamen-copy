@@ -1,0 +1,33 @@
+---
+/* Props til citat-sektionen */
+const {
+  // Selve citatet der vises
+  quote = "Dette er første gang i årevis, at jeg ikke føler mig hjemløs",
+
+  // Kilde eller person citatet kommer fra
+  source = "Citat fra tidligere hjemløs",
+
+  // Baggrundsbillede til sektionen
+  bg = "/assets/grafik/citat-bg-brown.svg",
+} = Astro.props;
+---
+
+<section class='bg-background1 relative w-full overflow-hidden py-4'>
+  <!-- Baggrundsgrafik -->
+  <img src={bg} alt='Brun baggrund banner, der deler sitet.' class='absolute inset-0 h-full w-full object-cover' />
+
+  <div class='relative z-10 mx-auto flex w-full max-w-7xl flex-col items-end justify-center gap-4 px-4 py-10 md:flex-row'>
+    <blockquote class='font-visuals text-m-visuals text-background2 lg:text-visuals w-full max-w-4xl rotate-[-2deg] leading-tight uppercase'>
+      <!-- Åbnings citationstegn -->
+      <span class='text-primary'>“</span>
+      {quote}
+      <!-- Luknings citationstegn -->
+      <span class='text-primary'>”</span>
+    </blockquote>
+
+    <!-- Kilde -->
+    <p class='text-m-p-small text-background2 md:text-p-small md:mb-4'>
+      {source}
+    </p>
+  </div>
+</section>

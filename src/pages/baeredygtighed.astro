@@ -1,0 +1,78 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import Deler from "../components/generelt/Deler.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import BilledeTekst from "../components/afsnit/BilledeTekst.astro";
+import DelerStreg from "../components/generelt/DelerStreg.astro";
+import ProjektSektion from "../components/afsnit/ProjektSektion.astro";
+import DelerGraa from "../components/generelt/DelerGraa.astro";
+import IkonKort from "../components/afsnit/IkonKort.astro";
+---
+
+<Layout
+  pagetitle="Bæredygtighed"
+  description="Læs hvordan Hjælp Din Næste arbejder bæredygtigt med genbrug, donationer og overskudslagre for at hjælpe flere med færre nye ressourcer."
+>
+  <HeroLille
+    titel="Bæredygtighed"
+    billede="/assets/img/bæredyg-cover-card.webp"
+    imageAlt="Herobillede om bæredygtighed og genbrug hos Hjælp Din Næste"
+    farve="text-background1"
+    billedePlacering="50% 45%"
+  />
+  <Deler ws="m" />
+
+  <TekstBillede
+    title="Fra ildsjæle til gadens folk"
+    paragraphs={[
+      "Størstedelen af det varme tøj, vi donerer, kommer fra private mennesker. Ildsjæle, der tager tid ud af deres hverdag for at aflevere tøj, de ikke længere selv bruger.",
+      "Tøj som stadig kan holde nogen varm. Tøj som ellers ville være blevet glemt eller smidt ud.",
+      "Derudover har vi, og opsøger løbende, samarbejdspartnere, der donerer produkter fra deres overskudslagre. På den måde kan nye ting gøre gavn, uden at der produceres mere end nødvendigt.",
+    ]}
+    image="/assets/grafik/hænder.svg"
+    imageAlt="Tegning af hænder"
+    imageClass="!w-70 mx-auto object-contain lg:!w-75 mt-28"
+  />
+
+  <Deler ws="m" />
+
+  <DelerGraa>
+    <div class="mx-auto max-w-lg px-4">
+      <h2
+        class="font-visuals text-m-title1 md:text-visuals text-background1 -mb-2 text-center"
+      >
+        Vores mål
+      </h2>
+      <IkonKort
+        billede="/assets/grafik/hjerte-fyld-rød.svg"
+        imageAlt="Hjerteikon for bæredygtighedsmål"
+        tekst="“At hjælpe flere mennesker med
+færre nye ressourcer” Ved at prioritere genbrug frem for nyindkøb og basere vores arbejde på overskud frem for overforbrug."
+        textColor="text-background1"
+        imageSize="h-16 w-16"
+      />
+    </div>
+  </DelerGraa>
+  <BilledeTekst
+    title="Projekt Nyt Hjem"
+    paragraphs={[
+      "I Projekt Nyt Hjem hjælper vi mennesker videre fra hjemløshed til egen bolig.",
+      "De genbrugsmøbler vi benytter til Projekt Nyt Hjem får vi igennem samarbejdspartnere samt vores netværk på Facebook. Her skriver vi borgerens ønsker op, hvorefter vores følgere kan byde ind med møbler, de ønsker at donere til det nye hjem.",
+      "De få ting vi ikke kan genbruge af hensyn til hygiejne og komfort, som fx madrasser, dyner, sengelinned og håndklæder, forsøger vi at skaffe fra rest- og overskudslagre.",
+      "Vi gør vores bedste for at balancere mellem at skabe varme og rare hjem ved hjælp af genbrug, samtidig med at sikre social værdighed ved at tilbyde nyindkøb til mennesker, der ellers aldrig har haft mulighed for selv at vælge ting til deres hjem.",
+      "Sidste år skabte vi hjem for over 140.000 kr. i brugt møbelværdi.",
+    ]}
+    image="/assets/grafik/hus-rød-hjerte.svg"
+    imageAlt="Tegnet hus med hjerte i midten"
+    imageClass="!w-40 mx-auto object-contain lg:!w-60 mt-28"
+  />
+
+  <Deler ws="s" />
+  <DelerStreg src="/assets/grafik/divider_grey.svg" />
+  <Deler ws="s" />
+  <ProjektSektion columns={2} />
+  <Deler ws="m" />
+  <FooterMedlem />
+</Layout>

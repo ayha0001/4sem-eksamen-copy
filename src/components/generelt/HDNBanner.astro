@@ -1,0 +1,31 @@
+---
+/* props */
+const {
+  // Teksten der vises gentaget i banneret
+  text = "HJÆLP DIN NÆSTE",
+
+  /* gør det muligt at ændre baggrundsfarve */
+  backgroundColor = "bg-background1",
+
+  /* gør det muligt at ændre tekstfarve */
+  textColor = "text-secondary",
+} = Astro.props;
+---
+
+<!-- banner -->
+<div class={`${backgroundColor} w-full overflow-hidden py-2`}>
+  <!-- Container til den gentagne tekst -->
+  <div class='flex items-center justify-between gap-6 px-6 whitespace-nowrap'>
+    {
+      // Opretter 9 gentagelser af teksten
+      Array.from({ length: 9 }).map((_, index) => (
+        // Hver anden tekst får font-semibold for variation
+        <span
+          class={`font-body text-m-p-big lg:text-p-big tracking-wide uppercase ${textColor} ${index % 2 === 0 ? "font-normal" : "font-semibold"}`}
+        >
+          {text}
+        </span>
+      ))
+    }
+  </div>
+</div>

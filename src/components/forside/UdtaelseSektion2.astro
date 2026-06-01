@@ -1,0 +1,49 @@
+---
+import TekstCenter from "../afsnit/TekstCenter.astro";
+import UdtalelseKort from "../udtalelser/UdtalelseKort.astro";
+import Deler from "../generelt/Deler.astro";
+import Knap from "../generelt/Knap.astro";
+---
+
+<section class='mx-auto max-w-230 px-4'>
+  <TekstCenter
+    titel='Presse og omtale'
+    tekst='Gennem årene har vores arbejde været omtalt i medierne. Her kan du læse artikler og se indslag, der fortæller om vores indsats for mennesker i udsatte livssituationer.'
+  />
+
+  <div class='grid grid-cols-2 gap-3 md:grid-cols-3'>
+    <UdtalelseKort
+      title='Tv2 Kosmopol'
+      image='/assets/img/udtalelser/tv2kosmopol.webp'
+      alt='Tv2 Kosmopol'
+      text='Tv2 Kosmopol har skrevet en artikel om vores projekt “Projekt Velkommen Hjem”, hvor vi hjælper folk med at komme i bolig.'
+      linkText='Læs artiklen her'
+      href='https://www.tv2kosmopol.dk/koebenhavn/hjemloese-faar-hjaelp-til-boligindretningen-saadan-har-stella-faaet-et-nyt-hjem-vaek-fra-gaden?fbclid=IwAR3nPfUN9w5IHEfWLdNyFI0zYAQ0_FUoEBBwWaT1YRS1dIriPOs76dXxp8g'
+      titleColor='text-background1'
+    />
+
+    <UdtalelseKort
+      title='Bo Godt'
+      image='/assets/img/udtalelser/bogodt.webp'
+      alt='Bo Godt'
+      text='Bo Godt har lavet en video, hvor de har fulgt os i vores “Projekt Velkommen Hjem” projekt.'
+      linkText='Se videoen her'
+      href='https://www.facebook.com/watch/?v=1215847822456078'
+      titleColor='text-background1'
+    />
+
+    <UdtalelseKort
+      title='Politiken'
+      image='/assets/img/udtalelser/politikken.webp'
+      alt='Politiken'
+      text='Vores frivillige Nicholas har skrevet et debatindlæg om stigmatiseringen af hjemløse, som er blevet trykt i Politiken.'
+      linkText='Læs debatindlægget her'
+      href='https://politiken.dk/debat/debatindlaeg/art9395067/Stigmatiseringen-af-hjeml%C3%B8se-i-Danmark-er-blevet-ekstrem?fbclid=IwAR2uOMn7NYfaDMGq_mRMKDuvaop-L6pUgrSiaO67XHmL1B4cMpLBa8E9Feo'
+      titleColor='text-secondary'
+    />
+  </div>
+  <Deler ws='xs' />
+  <div class='text-center'>
+    <Knap variant='secondary' size='medium' href='/udtalelser'> LÆS MERE OM OS </Knap>
+  </div>
+</section>

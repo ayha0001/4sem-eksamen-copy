@@ -1,0 +1,254 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import DropDown from "../components/faq/DropDown.astro";
+import Link from "../components/generelt/Link.astro";
+import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import Deler from "../components/generelt/Deler.astro";
+---
+
+<Layout
+  pagetitle="FAQ"
+  description="Få svar på ofte stillede spørgsmål om hjemløshed, donationer og Hjælp Din Næstes arbejde."
+>
+  <HeroLille titel="Ofte stillede spørgsmål" farve="text-primary" />
+  <Deler ws="m" />
+  <TekstBillede
+    title="FAQ om hjemløshed i Danmark"
+    paragraphs={[
+      "Vi modtager mange spørgsmål vedrørende hvordan og hvorfor man ender som hjemløs i Danmark. Til dette kan vi henvise til WeShelters FAQ, som besvarer mange af de samme spørgsmål som vi også har modtaget.",
+      "Spørgsmålene og tilhørende svar kan læses på linket nedenfor eller længere nede på denne side.",
+    ]}
+    ,
+    image="/assets/grafik/spørgsmaalstegn.svg"
+    imageAlt="Smil og omsorg på Vesterbro"
+    imageClass="!w-30 mx-auto lg:!w-50 object-contain"
+  />
+  <Deler ws="m" />
+  <DropDown titel="Hvornår kan jeg aflevere tøj?">
+    <p class="text-m-p-big md:text-m-p-big text-secondary pt-3 pb-1">
+      Du kan aflevere tøj i vores åbningstid alle hverdage. Har du større
+      donationer, må du gerne kontakte os på forhånd, så vi kan tage bedst imod
+      dem.
+    </p>
+  </DropDown>
+  <DropDown titel="Hvornår er man hjemløs?">
+    <p class="font-semibold">
+      Tekst fra:
+      <Link
+        href="https://weshelter.dk/om-os/viden-om-hjemloeshed/ofte-stillede-spoergsmaal/"
+        variant="textlink"
+        size="small"
+        target="_blank"
+      >
+        https://weshelter.dk/om-os/viden-om-hjemloeshed/ofte-stillede-spoergsmaal/
+      </Link>
+    </p>
+
+    <p>
+      I Danmark findes der ingen officiel definition af hjemløshed, men hvert
+      andet år siden 2007 (2009, 2011, 2013, 2015 & 2017) har Det Nationale
+      Forsknings- og Analysecenter for Velfærd, VIVE (tidligere SFI), udført de
+      nationale kortlægninger af hjemløshed i Danmark. Kortlægningerne er
+      gennemført ved, at cirka 1400 lokale sociale tilbud og myndighedsenheder
+      udfylder et to-siders spørgeskema for hver enkelt person, der befinder sig
+      i en hjemløshedssituation, og som tilbuddet eller enheden har kontakt med
+      eller kendskab til. En kontrol for dobbelttællinger foretages ved hjælp af
+      CPR-numre og/eller initialer, samt øvrige oplysninger.
+    </p>
+
+    <p>
+      I forbindelse med undersøgelserne har VIVE forsøgt at definere, hvad det
+      vil sige at være hjemløs, hvilket har ledt til denne definition:
+    </p>
+
+    <p>
+      <em
+        >Hjemløse regnes personer, som ikke disponerer over egen (ejet eller
+        lejet) bolig eller værelse, men som er henvist til midlertidige
+        boalternativer, eller som bor midlertidigt og uden kontrakt hos familie,
+        venner eller bekendte. Som hjemløse regnes også personer uden et
+        opholdssted den kommende nat.</em
+      >
+      (Kilde: VIVEs Hjemløshed i Danmark, 2017)
+    </p>
+
+    <p>
+      I 2015 udvidede VIVE (dengang SFI) definitionen til at omfatte personer,
+      som befinder sig i en af følgende ni situationer:
+    </p>
+
+    <ul>
+      <li>
+        Personer som sover på gaden, i en trappeopgang, i et skur eller
+        lignende.
+      </li>
+      <li>
+        Personer som overnatter på natvarmestue/værested med nødovernatning.
+      </li>
+      <li>
+        Personer som overnatter på et akut/midlertidigt botilbud, som fx
+        herberger og forsorgshjem.
+      </li>
+      <li>
+        Personer som opholder sig på hotel, vandrehjem eller lignende på grund
+        af hjemløshed.
+      </li>
+      <li>
+        Personer som bor midlertidigt og uden kontrakt hos venner/bekendte eller
+        familie.
+      </li>
+      <li>
+        Personer som bor i midlertidig udslusningsbolig eller lignende uden
+        permanent kontrakt.
+      </li>
+      <li>
+        Personer der hører under kriminalforsorgen, skal løslades inden for 1
+        måned, og der er ikke iværksat en boligløsning forud for løsladelsen.
+      </li>
+      <li>
+        Personer som er indlagt på hospital eller opholder sig på et
+        behandlingssted og planlægges udskrevet inden for en måned, og hvor der
+        ikke er iværksat en boligløsning forud for udskrivningen.
+      </li>
+      <li>
+        Andet - fx personer som overnatter i campingvogne, kolonihavehuse o.l.
+      </li>
+    </ul>
+
+    <p>
+      Det skal nævnes, at denne definition af hjemløse er forholdsvis smal, i
+      det der findes en del personer, der på papiret har en bolig, men i praksis
+      har det, man kan betegne som "hjemløseadfærd".
+    </p>
+
+    <p>
+      Du kan læse alle undersøgelserne på
+      <Link
+        href="https://www.sfi.dk/projekter/hjemloesetaelling-2017-11927/"
+        variant="textlink"
+        size="small"
+        target="_blank"
+      >
+        VIVEs hjemmeside
+      </Link>
+    </p>
+  </DropDown>
+  <DropDown titel="Hvorfor bliver man hjemløs?">
+    <p class="font-semibold">
+      Tekst fra:
+      <Link
+        href="https://weshelter.dk/om-os/viden-om-hjemloeshed/ofte-stillede-spoergsmaal/"
+        variant="textlink"
+        size="small"
+        target="_blank"
+      >
+        https://weshelter.dk/om-os/viden-om-hjemloeshed/ofte-stillede-spoergsmaal/
+      </Link>
+    </p>
+
+    <p>
+      Hjemløshed er et komplekst problem, og der kan være mange grunde til, at
+      man bliver hjemløs. Som regel kæmper hjemløse med en kombination af
+      forskellige problemer, som rækker ud over dét at mangle en bolig. Typisk
+      drejer det sig om misbrugsproblemer, psykiske lidelser, ensomhed og
+      fattigdom.
+    </p>
+
+    <p>
+      Ifølge VIVE-forsker Lars Benjaminsen, vokser antallet af hjemløse i
+      Danmark grundet strukturelle faktorer og manglen på billige boliger. Et
+      studie udført af VIVE viser, at et stigende antal mennesker oplever at
+      blive sat ud af deres bolig, og hver fjerde af de udsatte beboere er
+      stadig hjemløs et år efter udsættelsen. I 2002 gennemførte de danske
+      fogedretter 1823 sager, hvor folk blev sat ud af deres bolig.
+    </p>
+
+    <p>
+      Det tal steg kraftigt i 2008 og første halvdel af 2009, hvor antallet var
+      steget til hhv. 3762 udsættelser og 2080 udsættelser (Kilde:
+      Domstolsstyrelsen). De tal blev igen toppet i 2011, hvor antallet af
+      tvangsudsættelser fra lejeboliger nåede op på 4.405 (Kilde:
+      Domstolsstyrelsen). Ifølge en undersøgelse lavet af det tidligere SFI i
+      2008 er 30% af dem, der bliver smidt ud, på kontanthjælp. Ofte er de dybt
+      gældsatte, og 38% har netop mistet deres job. Hver fjerde er stadig
+      hjemløs et år efter udsættelsen.
+    </p>
+  </DropDown>
+  <DropDown titel="Hvem er de hjemløse?">
+    <p class="font-semibold">
+      Tekst fra:
+      <Link
+        href="https://weshelter.dk/om-os/viden-om-hjemloeshed/ofte-stillede-spoergsmaal/"
+        variant="textlink"
+        size="small"
+        target="_blank"
+      >
+        https://weshelter.dk/om-os/viden-om-hjemloeshed/ofte-stillede-spoergsmaal/
+      </Link>
+    </p>
+
+    <ul>
+      <li>75 % af alle hjemløse er mænd og 25 % er kvinder.</li>
+      <li>36 % af alle hjemløse er under 30 år.</li>
+      <li>18 % af hjemløse har anden etnisk baggrund end dansk.</li>
+      <li>10 % af hjemløse overnatter på gaden.</li>
+      <li>
+        Ca. halvdelen (49 %) af de hjemløse befinder sig i København og
+        hovedstadsområdet.
+      </li>
+      <li>
+        61 % af hjemløse har et misbrug af narkotika, hash, alkohol eller
+        medicin.
+      </li>
+      <li>53 % af hjemløse skønnes at have en psykisk sygdom.</li>
+      <li>22 % af hjemløse skønnes at have en fysisk sygdom.</li>
+      <li>Ca. 50 % af hjemløse har været hjemløse i over 1 år.</li>
+    </ul>
+
+    <p>(Kilde: Hjemløshed i Danmark, VIVE, 2017)</p>
+  </DropDown>
+
+  <DropDown titel="Hvor bor de hjemløse?">
+    <p>
+      <strong>Tekst fra: </strong>
+      <Link
+        href="https://weshelter.dk/om-os/viden-om-hjemloeshed/ofte-stillede-spoergsmaal/"
+        variant="textlink"
+        size="small"
+        target="_blank"
+      >
+        https://weshelter.dk/om-os/viden-om-hjemloeshed/ofte-stillede-spoergsmaal/
+      </Link>
+    </p>
+
+    <p>
+      I 2017 udgav Det Nationale Forsknings- og Analysecenter for Velfærd
+      (VIVE), den sjette rapport om hjemløshed i Danmark. Undersøgelsen viser,
+      at der i alt er optalt 6.635 hjemløse personer i tælleugen, uge 6, 2017.
+      Tallet svarer til, at lidt over 1 ud af hver 1000 danskere i
+      optællingsugen var hjemløse.
+    </p>
+
+    <p>
+      VIVE antager dog at tallet er højere, fordi det er umuligt at vide om alle
+      hjemløse i Danmark indgår i optællingen. Inden kortlægningen i 2017 har
+      fire andre kortlægninger af hjemløse fundet sted. I 2007 blev der
+      registreret 5.253 hjemløse i Danmark. I 2009 var der sket et lille fald
+      til 4.998 hjemløse, men derefter skete en stigning i antallet af hjemløse
+      både i 2011 og 2013 og igen i 2015, hvor tallet var 6.138. Tallet steg
+      altså fra 2015 til 2017 med 8%. Kortlægningen i 2007 var det første af sin
+      art i Danmark.
+    </p>
+
+    <p>
+      Kortlægningerne gennemføres ved, at sociale tilbud og myndigheder på
+      hjemløseområdet i kortlægnings perioden udfylder et spørgeskema for hver
+      hjemløs person, de har haft kontakt med eller kendskab til i løbet af den
+      pågældende uge.
+    </p>
+  </DropDown>
+  <Deler ws="m" />
+  <FooterMedlem />
+</Layout>

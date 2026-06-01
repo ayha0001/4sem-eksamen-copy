@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import KontaktHjaelp from "../components/testamente/KontaktHjaelp.astro";
+import DelerStreg from "../components/generelt/DelerStreg.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import Deler from "../components/generelt/Deler.astro";
+---
+
+<Layout
+  pagetitle="Testamente"
+  description="Læs hvordan du kan testamentere til Hjælp Din Næste og støtte hjemløse og udsatte med dit eftermæle."
+>
+  <HeroLille
+    titel="TESTAMENTE"
+    baggrund="bg-background1"
+    farve="text-primary"
+  />
+  <Deler ws="m" />
+  <TekstBillede
+    title="Giv værdi fra efterlivet"
+    paragraphs={[
+      "Hos Hjælp Din Næste tror vi på at gode intentioner ikke kender nogen grænser, derfor kan du testamentere til fordel for os og være med til at hæve levestandard samt sikre et værdigt liv for samfundets mest udsatte.",
+      "Det er gratis og gør mere, end du aner.",
+      "For at gøre det nemt og enkelt at oprette et testamente med donation af arv, har vi indgået et samarbejde med virksomheden Dokument 24.",
+      "Hos Dokument 24 kan du oprette dit testamente ved at svare på 12-15 spørgsmål online. Når spørgsmålene er besvaret, får du straks et skræddersyet testamente tilsendt pr. e-mail.",
+    ]}
+    image="/assets/img/testa-1.webp"
+    imageAlt="Smil og omsorg på Vesterbro"
+    caption="Smil og omsorg på Vesterbro"
+    imageClass="h-120 w-full object-cover object-top"
+  />
+  <Deler ws="m" />
+  <DelerStreg src="/assets/grafik/divider_grey.svg" width="950" />
+  <KontaktHjaelp />
+  <FooterMedlem />
+</Layout>

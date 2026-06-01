@@ -1,0 +1,215 @@
+---
+//@ts-nocheck
+import Knap from "../generelt/Knap.astro";
+---
+
+<section class='mx-auto max-w-230 px-4' data-aos='fade-up' data-aos-duration='500'>
+  <div class='mx-auto'>
+    <!-- overskrift -->
+    <div class='mb-6 max-w-2xl'>
+      <h2 class='font-body text-m-title2 lg:text-title2 mb-2 font-semibold'>Bliv frivillig</h2>
+
+      <p class='font-body text-m-p-big lg:text-p-big text-secondary leading-relaxed'>Er du interesseret? Så send en motiveret ansøgning til os.</p>
+      <p>
+        Udfyld formularen eller send en mail til <a href='mailto:frivillig@hjaelpdinnaeste.org'>frivillig@hjaelpdinnaeste.org</a>
+      </p>
+    </div>
+  </div>
+
+  <!--  Formular -->
+  <form id='frivilligForm' class='space-y-4'>
+    <!-- navn og email -->
+    <div class='grid gap-4 lg:grid-cols-2'>
+      <div>
+        <label for='name' class='font-body text-m-p-big lg:text-p-big text-secondary'>
+          Navn<span class='text-primary'>*</span>
+        </label>
+        <input
+          id='name'
+          name='name'
+          type='text'
+          placeholder='Indtast dit for- og efternavn'
+          required
+          class='border-secondary font-body text-secondary focus:border-primary mt-2 w-full rounded-sm border bg-transparent px-4 py-2 outline-none'
+        />
+      </div>
+
+      <div>
+        <label for='birthday' class='font-body text-m-p-big lg:text-p-big text-secondary'>
+          Fødselsdag<span class='text-primary'>*</span>
+        </label>
+        <input
+          id='birthday'
+          name='birthday'
+          type='date'
+          placeholder='Indtast din fødselsdag'
+          required
+          class='border-secondary font-body text-secondary focus:border-primary mt-2 w-full rounded-sm border bg-transparent px-4 py-2 outline-none'
+        />
+      </div>
+    </div>
+
+    <div class='grid gap-4 lg:grid-cols-2'>
+      <div>
+        <label for='email' class='font-body text-m-p-big lg:text-p-big text-secondary'>
+          E-mail<span class='text-primary'>*</span>
+        </label>
+        <input
+          id='email'
+          name='email'
+          type='email'
+          placeholder='Indtast din e-mail'
+          required
+          class='border-secondary font-body text-secondary focus:border-primary mt-2 w-full rounded-sm border bg-transparent px-4 py-2 outline-none'
+        />
+      </div>
+
+      <div>
+        <label for='phone' class='font-body text-m-p-big lg:text-p-big text-secondary'>
+          Telefon<span class='text-primary'>*</span>
+        </label>
+        <input
+          id='phone'
+          name='phone'
+          type='tel'
+          placeholder='Indtast dit telefonnummer'
+          required
+          class='border-secondary font-body text-secondary focus:border-primary mt-2 w-full rounded-sm border bg-transparent px-4 py-2 outline-none'
+        />
+      </div>
+    </div>
+
+    <!-- Hvorfor vil du gerne være frivillig -->
+    <div>
+      <label for='message1' class='font-body text-m-p-big lg:text-p-big text-secondary'>
+        Hvorfor vil du gerne være frivillig i Hjælp Din Næste? <span class='text-primary'>*</span>
+      </label>
+      <textarea
+        id='message1'
+        name='message'
+        placeholder='Skriv her'
+        required
+        class='border-secondary font-body text-secondary focus:border-primary mt-2 min-h-[220px] w-full resize-none rounded-sm border bg-transparent px-4 py-2 outline-none'
+      ></textarea>
+    </div>
+
+    <!-- Hvorfor har du valgt lige Hjælp Din Næste?  -->
+    <div>
+      <label for='message2' class='font-body text-m-p-big lg:text-p-big text-secondary'>
+        Hvorfor har du valgt lige Hjælp Din Næste? <span class='text-primary'>*</span>
+      </label>
+      <textarea
+        id='message2'
+        name='message2'
+        placeholder='Skriv her'
+        required
+        class='border-secondary font-body text-secondary focus:border-primary mt-2 min-h-55 w-full resize-none rounded-sm border bg-transparent px-4 py-2 outline-none'
+      ></textarea>
+    </div>
+
+    <!-- LinkedIn -->
+    <div>
+      <label for='linkedin' class='font-body text-m-p-big lg:text-p-big text-secondary'> Link til LinkedIn eller lignende (Valgfri) </label>
+      <input
+        id='linkedin'
+        name='linkedin'
+        type='text'
+        placeholder='Skriv her'
+        class='border-secondary font-body text-secondary focus:border-primary mt-2 w-full rounded-sm border bg-transparent px-4 py-2 outline-none'
+      />
+    </div>
+
+    <!-- Projekter (checkboxes) -->
+    <div>
+      <label class='font-body text-m-p-big lg:text-p-big text-secondary mb-3 block'>
+        Hvilke projekt vil du helst arbejde med? Vælg gerne flere
+      </label>
+      <div class='flex flex-col gap-2'>
+        <label class='font-body text-m-p-big text-secondary flex cursor-pointer items-center gap-3'>
+          <input type='checkbox' name='projekter' value='nyt-hjem' class='peer sr-only' />
+          <span
+            class="border-secondary bg-background1 after:border-primary peer-focus-visible:outline-primary relative grid h-5 min-h-5 w-5 min-w-5 place-content-center rounded border-1 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 after:mb-[1px] after:h-[10px] after:w-[5px] after:rotate-45 after:border-r-2 after:border-b-2 after:opacity-0 after:transition-opacity after:duration-100 after:content-[''] peer-checked:after:opacity-100"
+          ></span>
+          Projekt Nyt Hjem
+        </label>
+        <label class='font-body text-m-p-big text-secondary flex cursor-pointer items-center gap-3'>
+          <input type='checkbox' name='projekter' value='uddelinger' class='peer sr-only' />
+          <span
+            class="border-secondary bg-background1 after:border-primary peer-focus-visible:outline-primary relative grid h-5 min-h-5 w-5 min-w-5 place-content-center rounded border-1 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 after:mb-[1px] after:h-[10px] after:w-[5px] after:rotate-45 after:border-r-2 after:border-b-2 after:opacity-0 after:transition-opacity after:duration-100 after:content-[''] peer-checked:after:opacity-100"
+          ></span>
+          Uddelinger på gaden / herberger
+        </label>
+        <label class='font-body text-m-p-big text-secondary flex cursor-pointer items-center gap-3'>
+          <input type='checkbox' name='projekter' value='julegaveuddelinger' class='peer sr-only' />
+          <span
+            class="border-secondary bg-background1 after:border-primary peer-focus-visible:outline-primary relative grid h-5 min-h-5 w-5 min-w-5 place-content-center rounded border-1 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 after:mb-[1px] after:h-[10px] after:w-[5px] after:rotate-45 after:border-r-2 after:border-b-2 after:opacity-0 after:transition-opacity after:duration-100 after:content-[''] peer-checked:after:opacity-100"
+          ></span>
+          Julegaveuddelinger
+        </label>
+      </div>
+    </div>
+
+    <!-- knap og besked -->
+    <div class='flex flex-col items-end gap-3'>
+      <Knap id='frivilligSubmit' type='button' variant='secondary2' size='small'> INDSEND INFORMATIONER </Knap>
+
+      <p
+        id='successMessage'
+        class='font-body text-m-p-small lg:text-p-small text-secondary pointer-events-none opacity-0 transition-all duration-300 ease-out'
+      >
+        Dine informationer er sendt videre.
+      </p>
+    </div>
+  </form>
+</section>
+
+<script>
+  // Finder formular-elementet via id
+  const form = document.querySelector("#frivilligForm") as HTMLFormElement;
+
+  // Finder submit-knappen
+  const submitButton = document.querySelector("#frivilligSubmit");
+
+  // Finder succesbeskeden som vises efter indsendelse
+  const successMessage = document.querySelector("#successMessage");
+
+  // Lytter efter klik på submit-knappen
+  submitButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    // Tjekker om formularen er valid
+    // Fx om required felter er udfyldt korrekt
+    if (!form.checkValidity()) {
+      // Viser browserens standard fejlbeskeder
+      form.reportValidity();
+
+      // Stopper funktionen hvis formularen ikke er valid
+      return;
+    }
+
+    // Nulstiller alle inputfelter efter succesfuld indsendelse
+    form.reset();
+
+    // Gør succesbeskeden synlig ved at ændre klasser
+    successMessage?.classList.remove("opacity-0");
+    successMessage?.classList.add("opacity-100");
+
+    // Opretter lydfil til feedback ved indsendelse
+    const sound = new Audio("/assets/send.mp3");
+    sound.play();
+
+    const btn = submitButton as HTMLButtonElement;
+
+    // Deaktiverer knappen så formularen ikke kan sendes flere gange
+    btn.disabled = true;
+
+    // Ændrer cursor for at vise at knappen er deaktivert
+    btn.style.cursor = "not-allowed";
+
+    // Gør knappen mere transparent visuelt
+    btn.style.opacity = "0.6";
+
+    // Ændrer teksten på knappen efter indsendelse
+    btn.textContent = "INDSENDT";
+  });
+</script>

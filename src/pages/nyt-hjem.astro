@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import HjaelpSektion from "../components/nyt-hjem/HjaelpSektion.astro";
+import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import SogHjaelp from "../components/nyt-hjem/SogHjaelp.astro";
+import Deler from "../components/generelt/Deler.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import SliderKort from "../components/nyt-hjem/SliderKort.astro";
+import ProjektSektion from "../components/afsnit/ProjektSektion.astro";
+import DelerStreg from "../components/generelt/DelerStreg.astro";
+---
+
+<Layout
+  pagetitle="Nyt hjem"
+  description="Læs om Projekt Nyt Hjem, hvor Hjælp Din Næste støtter tidligere hjemløse med en værdig start i egen bolig."
+>
+  <HeroLille
+    titel="Nyt Hjem"
+    billede="/assets/img/nyth-hero.webp"
+    imageAlt="Herobillede fra projektet Nyt Hjem"
+    farve="text-background1"
+    billedePlacering="30% 25%"
+  />
+  <Deler ws="m" />
+  <TekstBillede
+    title="Alle fortjener et hjem"
+    paragraphs={[
+      "Projekt Nyt Hjem er skabt for at sikre, at vejen fra hjemløshed til egen bolig ikke stopper ved en nøgle i hånden – men fører videre til et reelt hjem og en ny begyndelse.",
+      "Når et menneske flytter ind i sin egen bolig efter en periode med hjemløshed, opstår der ofte mange praktiske, økonomiske og personlige udfordringer. Gennem Projekt Nyt Hjem tilbyder vi en helhedsorienteret støtte, der tager udgangspunkt i den enkelte og deres behov.",
+      "Det vigtigste i Projekt Nyt Hjem er, at den tidligere hjemløse selv har indflydelse. Indflytningen planlægges i dialog, så hjælpen tilpasses de behov, ønsker og mangler, der er – uanset hvor individuelle de måtte være. For et hjem er ikke ens for alle, og trivsel skabes først, når man føler sig set, hørt og respekteret.",
+      "Vores mål er at skabe trygge og værdige rammer, hvor mennesker får mulighed for at finde ro, genopbygge hverdagen og tage de første skridt mod et stabilt og selvstændigt liv. Vi tror på, at et hjem er fundamentet for forandring – og at den rette støtte i starten kan gøre en afgørende forskel.",
+    ]}
+    image="/assets/img/nyth-1.webp"
+    imageAlt="En glad kvinde (og hund) i deres nye hjem"
+    caption="En glad kvinde (og hund) i deres nye hjem"
+    imageClass="w-full object-cover mt-10"
+  />
+
+  <Deler ws="m" />
+  <section data-aos="fade-up" data-aos-duration="500">
+    <h2
+      class="font-body text-m-title2 text-secondary lg:text-title2 text-center font-semibold"
+    >
+      Vi hjælper blandt andet med
+    </h2>
+
+    <Deler ws="xs" />
+    <HjaelpSektion />
+  </section>
+  <Deler ws="m" />
+  <SogHjaelp
+    title="Søger du hjælp som tidligere hjemløs?"
+    text="Send en mail til hdn@hjaelpdinnaeste.org med din kontaktperson fra kommunen, bosted eller lignende og en beskrivelse af din situation samt hvad du mangler."
+    buttonText="Kontakt os"
+    buttonLink="/kontakt"
+    image="/assets/grafik/hus-hvid-hjerte.svg"
+  />
+
+  <Deler ws="m" />
+  <SliderKort />
+  <Deler ws="m" />
+
+  <DelerStreg src="/assets/grafik/divider_grey.svg" />
+  <Deler ws="m" />
+
+  <ProjektSektion columns={2} />
+
+  <Deler ws="m" />
+  <FooterMedlem />
+</Layout>

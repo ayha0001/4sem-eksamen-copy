@@ -1,0 +1,22 @@
+---
+const { text = "FASTE SPONSORER" } = Astro.props;
+---
+
+<div
+  class="relative flex h-[55px] w-full items-center justify-center overflow-hidden lg:h-auto"
+>
+  <!-- svg banner -->
+  <img
+    src="/assets/grafik/partner-divider.svg"
+    alt=""
+    aria-hidden="true"
+    class="h-full w-full object-cover lg:h-auto lg:object-fill"
+  />
+
+  <!-- tekst ovenpå -->
+  <h2
+    class="font-visuals text-m-title2 text-background1 lg:text-title2 absolute z-10 -mt-2 text-center uppercase"
+  >
+    {text}
+  </h2>
+</div>

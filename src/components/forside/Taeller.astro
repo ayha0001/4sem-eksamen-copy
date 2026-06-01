@@ -1,0 +1,48 @@
+---
+// types for props
+interface Props {
+  tekst1: string;
+  nummer: number;
+  tekst2: string;
+
+  // underline er valgfri
+  underline?: boolean;
+
+  // gør det muligt at ændre tekstfarve
+  textColor?: string;
+}
+
+// props
+const {
+  tekst1,
+  nummer,
+  tekst2,
+  underline = false,
+
+  // standard tekstfarve
+  textColor = "text-secondary",
+} = Astro.props;
+---
+
+<!-- wrapper -->
+<div class={`flex h-full flex-col text-center ${textColor}`}>
+  <!-- øverste tekst -->
+  <p class='text-m-p-big md:text-p-big mb-2'>
+    {tekst1}
+  </p>
+
+  <!-- tal -->
+  <div class='relative w-fit self-center'>
+    <p class='font-visuals text-m-visuals md:text-visuals' data-aos='zoom-in' data-aos-duration='700' data-aos-easing='ease-in'>
+      {nummer.toLocaleString("da-DK")}
+    </p>
+
+    <!-- underline vises kun hvis underline = true -->
+    {underline && <img src='/assets/grafik/deler-taeller.svg' alt='' aria-hidden='true' class='absolute -bottom-1 left-0 w-full' />}
+  </div>
+
+  <!-- nederste tekst -->
+  <p class='text-m-p-big md:text-p-big mt-2'>
+    {tekst2}
+  </p>
+</div>

@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import Deler from "../components/generelt/Deler.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import BilledeTekst from "../components/afsnit/BilledeTekst.astro";
+import DelerCitat from "../components/forside/DelerCitat.astro";
+import ProjektSektion from "../components/afsnit/ProjektSektion.astro";
+import DelerGraa from "../components/generelt/DelerGraa.astro";
+import Taeller from "../components/forside/Taeller.astro";
+---
+
+<Layout
+  pagetitle="Uddelinger"
+  description="Læs om Hjælp Din Næstes uddelinger i København med tøj, mad, værnemidler og omsorg til hjemløse på gaden."
+>
+  <HeroLille
+    titel="Uddelinger"
+    billede="/assets/img/udd-hero.webp"
+    imageAlt="Uddeling på gaden i København"
+    farve="text-background1"
+    billedePlacering="50% 33%"
+  />
+  <Deler ws="m" />
+  <TekstBillede
+    title="Uddelinger i København"
+    paragraphs={[
+      "Siden marts måned 2020, da Danmark lukkede ned, er vi cyklet ud på gaderne i store dele af København og har hjulpet hjemløse med varmt tøj, soveposer, liggeunderlag, tæpper, mad, kaffe, værnemidler og masser af omsorg.",
+
+      "Noget af det mest fantastiske ved uddelingerne, er at få lov til at møde folk på gaden i øjenhøjde og lytte til deres historier. Når vi kontinuerligt er til stede i gadebilledet og hjælper de mennesker, som lever på gaden, danner vi hver måned nye venskaber og får et bredt kendskab til, hvordan vi hjælper dem til en bedre livskvalitet.",
+
+      "Den forøgede livskvalitet kommer også af, at vi fortæller de hjemløses historier og viser alle siderne af gadelivet. Over de sidste 5 år har vi via. vores cykel-uddelinger hjulpet flere tusinde mennesker til en bedre levestandard.",
+    ]}
+    image="/assets/img/udd-1.webp"
+    imageAlt="Uddeling af drikke, mad, tøj og værnemidler på Christianshavn "
+    caption="Uddeling af drikke, mad, tøj og værnemidler på Christianshavn "
+    imageClass="h-120 w-full object-cover object-center "
+  />
+  <Deler ws="m" />
+  <BilledeTekst
+    title="Dit tøj gør en forskel"
+    paragraphs={[
+      "På uddelingerne er 95% af det tøj vi har med ude fra ildsjæle der kommer forbi med deres brugte fine tøj. Vi vil gerne sige tusind tak til alle jer der hver mandag kommer forbi. ",
+      "Du kan aflevere tøj til os på Badstuestræde 13 alle mandage mellem 12-18. Hvis du kommer forbi i dette tidsrum står vi klar med godt humør og en blomst til dig. Husk at vi kun tager imod rent og vasket tøj. ",
+    ]}
+    image="/assets/grafik/hh.svg"
+    imageAlt="Dit tøj gør en forskel"
+    imageClass="!w-50 mx-auto lg:!w-75 object-contain"
+  />
+  <Deler ws="m" />
+
+  <DelerGraa>
+    <div class="mx-auto max-w-lg px-4">
+      <img
+        src="/assets/grafik/cykel.svg"
+        alt="Julegave"
+        class="mx-auto mb-4 h-18 w-20"
+      />
+      <Taeller
+        tekst1="Omfordelt for en samlet værdi af"
+        nummer={1621619}
+        tekst2="kroner i 2025"
+        underline={true}
+        textColor="text-background1"
+      />
+    </div>
+  </DelerGraa>
+
+  <Deler ws="m" />
+
+  <BilledeTekst
+    title="I sne og slud - cykler vi ud!"
+    paragraphs={[
+      "Lige nu har vi omkring 100 frivillige der hver uge gør dette muligt. På uddelingerne cykler vi ud året rundt. Ligegyldigt om det regner, sner eller stormer sørger vi for at folk får de nødvendige værnemidler de skal bruge for at overleve på gaden.",
+
+      "Lige nu faciliterer vi 4 uddelinger hver uge, hvor vi cykler ud til hele København. Hver onsdag laver vores seje frivillige hjemmelavet mad, hvilket gadens folk sætter enormt stort pris på. ",
+
+      "Om vinteren uddeler vi flere gange. Her er det 4-6 gange om ugen vi cykler ud. Grunden til at vi cykler ud flere gange om vinteren er fordi det er her hvor folk har det hårdest og har mest brug for hjælp. Her er formålet at sikre at folk ikke får forfrysninger eller omkommer på gaden.",
+
+      "Nogle gange møder vi folk som går rundt uden sko på, eller som ikke har mere end en spinkel trøje på kroppen.",
+    ]}
+    image="/assets/img/udd-2.webp"
+    imageAlt="Holdet på vej på uddeling i sneen"
+    caption="Holdet på vej på uddeling i sneen"
+    imageClass="h-120 w-full object-cover object-center "
+  />
+  <DelerCitat
+    quote="Vores arbejde ville aldrig være muligt uden jer 92 ildsjæle, der hver uge cykler ud på gaden, så tusind tak for jer!"
+    source="Snorre, stifter af Hjælp DIn Næste"
+  />
+  <Deler ws="m" />
+  <ProjektSektion columns={2} />
+  <Deler ws="m" />
+  <FooterMedlem />
+</Layout>

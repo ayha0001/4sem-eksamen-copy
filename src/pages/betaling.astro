@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import BetalingsKomponent from "../components/stoet-form/Betaling.astro";
+import Deler from "../components/generelt/Deler.astro";
+---
+
+<Layout
+  pagetitle="Betaling"
+  description="Gennemfør din støtte til Hjælp Din Næste og fuldfør betalingen sikkert."
+>
+  <section class="min-h-screen p-4 lg:p-8">
+    <HeroLille
+      titel="BETALING"
+      baggrund="bg-background1"
+      farve="text-primary"
+    />
+
+    <BetalingsKomponent currentStep={3} />
+
+    <Deler ws="m" />
+  </section>
+</Layout>

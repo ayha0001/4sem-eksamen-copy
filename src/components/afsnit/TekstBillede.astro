@@ -1,0 +1,78 @@
+---
+interface Props {
+  title: string;
+  paragraphs: string[];
+  image: string;
+  imageAlt: string;
+  caption?: string;
+  imageClass?: string;
+  figureClass?: string;
+  headingTag?: "h1" | "h2" | "h3";
+  titleClass?: string;
+}
+
+const {
+  title,
+  paragraphs,
+  image,
+  imageAlt,
+  caption,
+  imageClass,
+  figureClass,
+  titleClass,
+  headingTag = "h2",
+} = Astro.props;
+---
+
+<section
+  class="mx-auto max-w-230 px-4"
+  data-aos="fade-right"
+  data-aos-duration="500"
+>
+  <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
+    <!-- Tekst -->
+    <div>
+      {
+        headingTag === "h1" ? (
+          <h1 class="font-body text-m-title1 text-secondary lg:text-title1 font-semibold">
+            {title}
+          </h1>
+        ) : headingTag === "h2" ? (
+          <h2
+            class={`font-body text-m-title2 text-secondary lg:text-title2 mb-2 leading-tight font-semibold ${titleClass || ""}`}
+          >
+            {title}
+          </h2>
+        ) : (
+          <h3 class="font-body text-m-title3 text-secondary lg:text-title3 font-semibold">
+            {title}
+          </h3>
+        )
+      }
+
+      <div
+        class="font-body text-m-p-big text-secondary lg:text-p-big space-y-5 leading-relaxed"
+      >
+        {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <slot />
+      </div>
+    </div>
+
+    <!-- Billede -->
+    <figure class={figureClass || "w-full"}>
+      <img
+        src={image}
+        alt={imageAlt}
+        class={`${imageClass || "w-full"} rounded-md object-cover`}
+      />
+
+      {
+        caption && (
+          <figcaption class="font-body text-m-p-small text-secondary lg:text-p-small mt-2 text-right">
+            {caption}
+          </figcaption>
+        )
+      }
+    </figure>
+  </div>
+</section>

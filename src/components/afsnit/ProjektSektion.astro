@@ -1,0 +1,79 @@
+---
+import ProjektKort from "./ProjektKort.astro";
+import TekstCenter from "./TekstCenter.astro";
+
+// prop som bestemmer hvor mange cards der skal vises
+const { columns = 4 } = Astro.props;
+
+// array med alle projekter
+const projects = [
+  {
+    image: "/assets/img/nyth-cover-card.webp",
+    imageAlt:
+      "Kvinde der ligger i sin nye seng med hjælp fra frivillige til Projekt nyt Hjem",
+    title: "Projekt Nyt Hjem",
+    text: "Læs mere om Projekt Nyt Hjem, som hjælper tidligere hjemløse med at skabe en tryg og værdig start i egen bolig.",
+    href: "/nyt-hjem",
+  },
+
+  {
+    image: "/assets/img/bæredyg-cover-card.webp",
+    imageAlt: "2 drenge foran en bil med støvler",
+    title: "Bæredygtighed",
+    text: "Læs mere om vores arbejde med bæredygtighed gennem genbrug, ansvarligt forbrug og sociale indsatser for mennesker i udsatte positioner.",
+    href: "/baeredygtighed",
+  },
+
+  {
+    image: "/assets/img/jul-cover-card.webp",
+    imageAlt: "Gaver samlet ind til julegaveprojektet",
+    title: "Julegaveindsamling",
+    text: "Læs mere om julegaveindsamlingen, hvor gaver og fællesskab er med til at skabe en varmere jul for udsatte mennesker.",
+    href: "/julegaveindsamling",
+  },
+
+  {
+    image: "/assets/img/udd-cover-card.webp",
+    imageAlt: "Frivillige på gaden med donationer",
+    title: "Uddelinger på gaden",
+    text: "Læs mere om vores uddelinger, hvor frivillige hjælper med mad, tøj og andre nødvendige ting til mennesker på gaden.",
+    href: "/uddelinger",
+  },
+];
+
+// laver en kopi af arrayet og blander rækkefølgen tilfældigt
+const shuffledProjects = [...projects].sort(() => Math.random() - 0.5);
+
+// vælger hvor mange projekter der skal vises
+// hvis columns={2} vises 2 projekter
+// hvis columns={4} vises 4 projekter
+const visibleProjects = shuffledProjects.slice(0, columns);
+---
+
+<section
+  class="bg-background1 mx-auto max-w-230 px-4"
+  data-aos="fade-up"
+  data-aos-duration="500"
+>
+  <!-- overskrift og intro tekst -->
+  <TekstCenter
+    titel="Udforsk vores projekter"
+    tekst="Læs mere om vores arbejde og hvordan dine midler bliver brugt til at hjælpe mennesker, der har brug for din støtte."
+  />
+
+  <!-- grid med cards -->
+  <div class="mx-auto mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
+    <!-- mapper alle valgte projekter ud som cards -->
+    {
+      visibleProjects.map((project) => (
+        <ProjektKort
+          image={project.image}
+          imageAlt={project.imageAlt}
+          title={project.title}
+          text={project.text}
+          href={project.href}
+        />
+      ))
+    }
+  </div>
+</section>

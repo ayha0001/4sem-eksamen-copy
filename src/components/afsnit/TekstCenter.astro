@@ -1,0 +1,19 @@
+---
+// types for props
+interface Props {
+  logo?: string;
+  logoAlt?: string;
+  titel: string;
+  tekst: string;
+}
+
+// læser props og tjekker dem mod Props-typen, så vi er sikre på at de er gyldige
+const { logo, logoAlt, titel, tekst } = Astro.props;
+---
+
+<section class="container mx-auto mb-7 px-4 text-center">
+  <!-- hvis logo er til stede, så vises det -->
+  {logo && <img src={logo} alt={logoAlt ?? titel} class="mx-auto mb-3" />}
+  <h2 class="text-m-title2 md:text-title2 mb-1 font-semibold">{titel}</h2>
+  <p class="mx-auto max-w-prose text-pretty">{tekst}</p>
+</section>

@@ -1,0 +1,99 @@
+---
+// Mobil-først bento grid komponent
+// Layout:
+// - Mobil: billederne flyder automatisk i gridet
+// - Desktop (lg): billederne får faste positioner med col-start og row-start
+
+// Array med alle billederne i galleriet.
+// Hvert objekt indeholder:
+// - src = sti til billedet
+// - classes = Tailwind grid-klasser til størrelse og placering
+const billeder = [
+  // - desktop: fylder 2 kolonner, starter i kolonne 6, starter i række 1
+  {
+    src: "/assets/img/bento-grid/billede-1.webp",
+    alt: "Syv frivillige fra Hjælp Din Næste smiler og står foran ladcykler med donationer.",
+    classes: "col-span-3 lg:col-span-2 lg:row-span-1 lg:col-start-6 lg:row-start-1",
+  },
+
+  // - fylder 2 kolonner, fylder 2 rækker i højden, placeres nederst til højre
+  {
+    src: "/assets/img/bento-grid/billede-2.webp",
+    alt: "Gruppebillede af frivillige fra Hjælp Din Næste, der smiler og sidder foran deres kontor.",
+    classes: "col-span-4 lg:col-span-2 lg:row-span-2 lg:col-start-6 lg:row-start-3",
+  },
+  {
+    src: "/assets/img/bento-grid/billede-3.webp",
+    alt: "Tre frivillige der uddeler mad og tøj foran Christianshavn i København.",
+    classes: "col-span-2 lg:col-span-3 lg:row-span-1 lg:col-start-2 lg:row-start-1",
+  },
+  {
+    src: "/assets/img/bento-grid/billede-4.webp",
+    alt: "Gruppebillede af en stor gruppe frivillige fra Hjælp Din Næste, der står mellem en masse kasse med julegaver til de udsatte.",
+    classes: "col-span-3 lg:col-span-1 lg:col-start-1 lg:row-start-1",
+  },
+  {
+    src: "/assets/img/bento-grid/billede-5.webp",
+    alt: "Tre frivillige foran en rød flyvemaskine.",
+    classes: "col-span-2 lg:col-span-1 lg:row-span-1 lg:col-start-7 lg:row-start-2",
+  },
+  {
+    src: "/assets/img/bento-grid/billede-6.webp",
+    alt: "To frivillige foran føtex med to indkøbsvogne fyldt med donationer.",
+    classes: "col-span-3 row-span-2 lg:col-span-1 lg:row-span-2 lg:col-start-1 lg:row-start-2",
+  },
+  {
+    src: "/assets/img/bento-grid/billede-7.webp",
+    alt: "Gruppeselfie 5 frivillige der smiler i en elevator.",
+    classes: "col-span-4 row-span-2 lg:col-span-2 lg:row-span-2 lg:col-start-2 lg:row-start-2",
+  },
+  {
+    src: "/assets/img/bento-grid/billede-8.webp",
+    alt: "Gruppebillede af frivillige fra Hjælp Din Næste, der står mellem en masse kasse med julegaver til de udsatte.",
+    classes: "col-span-4  lg:col-span-3 lg:row-span-1 lg:col-start-3 lg:row-start-4",
+  },
+  {
+    src: "/assets/img/bento-grid/billede-9.webp",
+    alt: "To frivillige. Den ene holder om den anden og de smiler.",
+    classes: "col-span-3 lg:col-span-1 lg:row-span-1 lg:col-start-5 lg:row-start-1",
+  },
+  {
+    src: "/assets/img/bento-grid/billede-10.webp",
+    alt: "Seks frivillige der uddeler i sneen. De står på rådhuspladsen og smiler til kameraet.",
+    classes: "col-span-7 row-span-2  lg:col-span-2 lg:row-span-2 lg:col-start-4 lg:row-start-2",
+  },
+
+  // Kun synligt på desktop
+  {
+    src: "/assets/img/bento-grid/billede-11.webp",
+    alt: "Frivillig fra Hjælp Din Næste der cykler med en ladcykel fyldt med donationer, på vej til at uddele..",
+    classes: "hidden lg:block lg:col-span-2 lg:row-span-1 lg:col-start-1 lg:row-start-4",
+  },
+  // Kun synligt på desktop
+  {
+    src: "/assets/img/bento-grid/billede-12.webp",
+    alt: "Tre frivillige der står foran en ladcykel og danner et hjerte med hænderne.",
+    classes: "hidden lg:block lg:col-span-1 lg:row-span-1 lg:col-start-6 lg:row-start-2",
+  },
+];
+---
+
+<section class='mx-auto grid max-w-230 gap-3 px-4 py-10'>
+  <!--
+    Grid opsætning:
+    - 7 kolonner i dekstop og mobil
+    - auto-rows styrer højden på hvert grid-element
+    - gap-1 giver spacing mellem billeder
+  -->
+  <div class='grid auto-rows-[160px] grid-cols-7 gap-1 sm:auto-rows-[140px]'>
+    {
+      // Looper gennem alle billeder i arrayet og renderer et <figure>-element for hvert billede
+      // lazy gør at billederne kun indlæses når de kommer i viewport, hvilket forbedrer performance
+      billeder.map((billede) => (
+        <figure class={`${billede.classes} overflow-hidden rounded`}>
+          <img src={billede.src} alt={billede.alt} class='block h-full w-full object-cover' loading='lazy' />
+        </figure>
+      ))
+    }
+  </div>
+</section>

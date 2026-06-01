@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import TekstCenter from "../components/afsnit/TekstCenter.astro";
+import Link from "../components/generelt/Link.astro";
+import Deler from "../components/generelt/Deler.astro";
+---
+
+<Layout
+  pagetitle="Tak!"
+  description="Tak for din støtte til Hjælp Din Næste. Se hvordan dit bidrag er med til at skabe konkret hjælp for mennesker på gaden."
+>
+  <!--  -->
+  <section class="min-h-screen p-4 lg:p-8">
+    <HeroLille
+      titel="TAK FOR DIN STØTTE"
+      baggrund="bg-background1"
+      farve="text-primary"
+    />
+
+    <div class="mt-ws-xs mb-ws-s flex justify-center">
+      <img
+        src="/assets/grafik/hjerte-fyld-rød.svg"
+        alt="ikon"
+        class="w-20 lg:w-24"
+      />
+    </div>
+
+    <TekstCenter
+      titel=""
+      tekst="Som medlem deltager du aktivt i vores kamp for at hjælpe gadens folk. Du sørger for at folk på gaden får varmt tøj, værnemidler, soveposer og andre redskaber mod kulden. Du bliver en hjemløseven og en del af vores vision for at hæve levestandarden og livskvaliteten for alle dem der lever på gaden."
+    />
+
+    <div class="mt-ws-s flex justify-center">
+      <Link href="/gennemsigtighed" variant="secondary" size="medium">
+        LÆS OM DIT BIDRAG
+      </Link>
+    </div>
+
+    <Deler ws="m" />
+  </section>
+</Layout>
+
+<script>
+  const sound = new Audio("/assets/send.mp3");
+
+  sound.play().catch(() => {
+    // Ignore autoplay blocks if the browser prevents audio on load.
+  });
+</script>

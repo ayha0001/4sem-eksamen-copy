@@ -1,0 +1,77 @@
+---
+import "../styles/global.css";
+import "aos/dist/aos.css";
+import Header from "../components/generelt/Header.astro";
+import Footer from "../components/generelt/Footer.astro";
+import HDNBanner from "../components/generelt/HDNBanner.astro";
+const { pagetitle, description = "Hjælp Din Næste hjælper hjemløse og udsatte gennem konkrete projekter, gennemsigtighed og fællesskab." } =
+  Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <!-- Favicon -->
+    <link rel='apple-touch-icon' sizes='180x180' href='/favicon_io/apple-touch-icon.png' />
+    <link rel='icon' type='image/png' sizes='32x32' href='/favicon_io/favicon-32x32.png' />
+    <link rel='icon' type='image/png' sizes='16x16' href='/favicon_io/favicon-16x16.png' />
+    <link rel='manifest' href='/favicon_io/site.webmanifest' />
+    <meta name='generator' content={Astro.generator} />
+    <meta name='description' content={description} />
+    <title>{pagetitle} | Hjælp Din Næste</title>
+    <script defer src='https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js'></script>
+  </head>
+  <body>
+    <div
+      x-data="{ open: !localStorage.getItem('iform-totally-logged-in'), pass: '', login() { if (this.pass === 'kea') { localStorage.setItem('iform-totally-logged-in','true'); this.open = false } else { this.pass = '' } } }"
+      x-cloak
+    >
+      <div x-show='open' x-transition class='fixed inset-0 z-50 flex items-center justify-center' aria-hidden='true'>
+        <div class='absolute inset-0 bg-black/80'></div>
+        <div class='relative z-50 w-full max-w-sm p-4'>
+          <div class='loginmodal-container rounded-lg bg-white p-6 text-center shadow-lg'>
+            <p class='mb-4 text-xl font-bold'>Login</p>
+            <p class='text-label mb-2 font-bold'>This is a school project</p>
+            <p class='mb-10 text-black'>
+              The password is <code>kea</code>
+            </p>
+            <form @submit.prevent='login'>
+              <input x-model='pass' type='password' name='pass' placeholder='Password' class='w-full rounded border p-2' />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <HDNBanner text='HJÆLP DIN NÆSTE' backgroundColor='bg-background1' textColor='text-secondary' />
+    <Footer />
+  </body>
+
+  
+  <script>
+    import AOS from "aos";
+
+    AOS.init({
+      disable: window.innerWidth < 1024,
+      once: true,
+      duration: 700,
+      easing: "ease-out-cubic",
+      offset: 80,
+    });
+  </script>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</html>

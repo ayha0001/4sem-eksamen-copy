@@ -1,0 +1,237 @@
+---
+type ButtonVariant =
+  | "primary"
+  | "primary2"
+  | "secondary"
+  | "secondary2"
+  | "secondary3"
+  | "textlink";
+
+type ButtonSize = "default" | "large" | "medium" | "small";
+
+interface Props {
+  href?: string;
+  target?: string;
+  rel?: string;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  icon?: string | null;
+  iconHover?: string | null;
+  class?: string;
+  fullWidth?: boolean;
+  id?: string;
+  type?: "button" | "submit" | "reset";
+}
+
+const {
+  href,
+  target = "_self",
+  rel,
+  variant = "primary",
+  size = "medium",
+  type = "button",
+  icon = null,
+  iconHover = null,
+  fullWidth = false,
+  id,
+  ...attrs
+} = Astro.props as Props & Record<string, unknown>;
+
+const linkRel =
+  rel ?? (target === "_blank" ? "noopener noreferrer" : undefined);
+const isLink = typeof href === "string" && href.length > 0;
+
+// Tjekker om varianten er et tekstlink
+const isTextlink = variant === "textlink";
+
+// Tjekker om varianten er primary, så hjertet kun vises dér
+const isPrimary = variant === "primary";
+
+// Base styling til almindelige knapper
+const buttonStyling =
+  "uppercase relative inline-flex overflow-hidden border-2 rounded py-2 px-6 items-center justify-center transition-all duration-500";
+const textlinkStyling = "inline-flex items-center gap-2 transition-all duration-300 font-body font-normal";
+
+// Vælger base styling alt efter variant
+const baseStyling = isTextlink ? textlinkStyling : buttonStyling;
+
+// Varianter
+const variantClasses = {
+  primary:
+    "bg-primary border-primary text-background1 cursor-pointer hover:font-bold",
+
+  primary2:
+    "bg-primary border-primary text-background1 hover:bg-background2 hover:text-primary hover:border-primary cursor-pointer",
+
+  secondary:
+    "bg-transparent border-secondary text-secondary hover:bg-secondary hover:text-background1 cursor-pointer",
+
+  secondary2:
+    "bg-secondary border-secondary text-background1 hover:bg-background2 hover:text-secondary hover:border-secondary cursor-pointer",
+
+  secondary3:
+    "bg-background1 border-primary text-primary hover:bg-primary hover:text-background1 hover:border-background1 cursor-pointer",
+
+  textlink:
+    "border-none bg-transparent p-0 text-secondary hover:text-primary hover:translate-x-1 cursor-pointer",
+};
+
+// Størrelser til knapper
+const buttonSizeClasses = {
+  default: "text-p-big lg:text-p-big",
+  large: "text-p-big lg:text-title3 px-20 py-3",
+  medium: "text-p-big lg:text-p-big px-10 py-2",
+  small: "text-p-small lg:text-p-small px-8 py-2",
+};
+
+// Størrelser til textlink uden ekstra padding
+const textlinkSizeClasses = {
+  default: "text-m-p-big lg:text-p-big",
+  large: "text-m-p-big lg:text-title3",
+  medium: "text-m-p-big lg:text-p-big",
+  small: "text-m-p-small lg:text-p-small",
+};
+
+// Vælger størrelse alt efter variant
+const sizeClasses = isTextlink
+  ? textlinkSizeClasses[size]
+  : buttonSizeClasses[size];
+
+// Ikonstørrelser
+const iconSizeClasses = {
+  default: "w-6 h-6",
+  large: "w-8 h-8",
+  medium: "w-6 h-6",
+  small: "w-5 h-5",
+};
+
+// Position på hjertet i primary-knappen
+// Hjertet placeres ud fra midten af knappen (left-1/2)
+// ml-* bestemmer afstanden fra teksten afhængigt af knappens størrelse
+const heartPositionClasses = {
+  default: "left-1/2 ml-6",
+  large: "left-1/2 ml-10",
+  medium: "left-1/2 ml-8",
+  small: "left-1/2 ml-4",
+};
+
+// Hvor meget teksten rykker sig på hover
+const textShiftClasses = {
+  default: "group-hover:-translate-x-4",
+  large: "group-hover:-translate-x-4",
+  medium: "group-hover:-translate-x-4",
+  small: "group-hover:-translate-x-2",
+};
+
+const iconSize = iconSizeClasses[size];
+const heartPosition = heartPositionClasses[size];
+const textShift = textShiftClasses[size];
+
+const linkClasses = [
+  baseStyling,
+  variantClasses[variant],
+  sizeClasses,
+  "group",
+  fullWidth ? "flex w-full" : "",
+  attrs.class,
+];
+---
+
+{
+  isLink ? (
+    <a
+      id={id}
+      href={href}
+      target={target}
+      rel={linkRel}
+      {...attrs}
+      class:list={linkClasses}
+    >
+      <!-- Teksten i knappen/linket -->
+      <span
+        class:list={[
+          "transition-transform duration-500",
+          isPrimary && textShift,
+        ]}
+      >
+        <slot />
+      </span>
+
+      <!-- Hjerte vises kun på primary-knappen -->
+      {
+        isPrimary && (
+          <img
+            src="/assets/grafik/hjerte-fyld-hvid.svg"
+            alt=""
+            class:list={[
+              iconSize,
+              heartPosition,
+              "pointer-events-none absolute top-1/2 translate-x-10 -translate-y-1/2 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100",
+            ]}
+          />
+        )
+      }
+
+      <!-- Ikoner til andre varianter end primary -->
+      {
+        !isPrimary && icon && (
+          <>
+            <img src={icon} alt="" class:list={[iconSize, "group-hover:hidden"]} />
+
+            {iconHover && (
+              <img
+                src={iconHover}
+                alt=""
+                class:list={[iconSize, "hidden group-hover:block"]}
+              />
+            )}
+          </>
+        )
+      }
+    </a>
+  ) : (
+    <button id={id} type={type} {...attrs} class:list={linkClasses}>
+      <!-- Teksten i knappen/linket -->
+      <span
+        class:list={[
+          "transition-transform duration-500",
+          isPrimary && textShift,
+        ]}
+      >
+        <slot />
+      </span>
+
+      <!-- Hjerte vises kun på primary-knappen -->
+      {
+        isPrimary && (
+          <img
+            src="/assets/grafik/hjerte-fyld-hvid.svg"
+            alt=""
+            class:list={[
+              iconSize,
+              heartPosition,
+              "pointer-events-none absolute top-1/2 translate-x-10 -translate-y-1/2 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100",
+            ]}
+          />
+        )
+      }
+
+      <!-- Ikoner til andre varianter end primary -->
+      {
+        !isPrimary && icon && (
+          <>
+            <img src={icon} alt="" class:list={[iconSize, "group-hover:hidden"]} />
+
+            {iconHover && (
+              <img
+                src={iconHover}
+                alt=""
+                class:list={[iconSize, "hidden group-hover:block"]}
+              />
+            )}
+          </>
+        )
+      }
+    </button>
+  )
+}

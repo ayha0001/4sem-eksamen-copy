@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import BilledeTekst from "../components/afsnit/BilledeTekst.astro";
+import DelerStreg from "../components/generelt/DelerStreg.astro";
+import Deler from "../components/generelt/Deler.astro";
+---
+
+<Layout
+  pagetitle="Støt med værnemidler"
+  description="Se hvordan du kan støtte Hjælp Din Næste med værnemidler, varmt tøj og andre nødvendige donationer."
+>
+  <HeroLille
+    titel="STØT MED VÆRNEMIDLER"
+    baggrund="bg-background1"
+    farve="text-primary"
+  />
+  <Deler ws="m" />
+  <TekstBillede
+    title="Hvordan støtter jeg Hjælp Din Næste?"
+    paragraphs={[
+      "Hjælp Din Næste er en privat humanitær-organisation stiftet i 2020 under corona epidemien. Hjælp Din Næste er en non-profit organisation og fokuserer udelukkende sine økonomiske midler på bedrifter, som støtter vores formål og vision.",
+    ]}
+    image="/assets/grafik/vanter.svg"
+    imageAlt="En tegning af vanter"
+    imageClass="!w-50 mx-auto lg:!w-70 object-contain"
+    figureClass="flex items-center justify-center"
+  />
+  <Deler ws="m" />
+  <BilledeTekst
+    title="Hvad tager vi imod?"
+    paragraphs={[
+      "Grundet lager tager vi lige nu kun imod varmt og praktisk tøj, som kan hjælpe folk med at holde varmen.",
+      "Vi mangler altid:",
+      "• Strømper",
+      "• Bukser",
+      "• Soveposer",
+      "• Regntøj",
+      "• Handsker",
+    ]}
+    image="/assets/img/støtmv-1.webp"
+    imageAlt="Medarbejdere foran en stak soveposer"
+    caption="170 soveposer klar til uddeling"
+    imageClass="w-full object-cover object-top lg:h-120"
+  />
+  <Deler ws="m" />
+  <DelerStreg src="/assets/grafik/divider_grey.svg" width="950" />
+  <Deler ws="m" />
+  <TekstBillede
+    title="Indlevering af tøj og værnemidler"
+    paragraphs={[
+      "Alt kan afleveres mellem 12:00 og 18:00 hver mandag på: Badstuestræde 13, 1211 København K.",
+      "Hvis dette ikke er muligt, kan du kontakte os på enten Facebook eller hjaelpdinnaeste@gmail.com for at lave en aftale.",
+    ]}
+    image="/assets/img/støtmv-2.webp"
+    imageAlt="Daniel fragter stole"
+    caption="Daniel fragter stole"
+    imageClass="h-120 w-full object-cover object-top"
+  />
+  <Deler ws="m" />
+  <FooterMedlem />
+</Layout>

@@ -1,0 +1,67 @@
+---
+//@ts-check
+// Importerer kort-komponenterne
+import AnsatKort from "./AnsatKort.astro";
+import AnsatJob from "./AnsatJob.astro";
+
+// Henter data fra Supabase-tabellen "holdet"
+// ?select=* betyder at alle kolonner hentes
+const url = "https://zshjtuvejhijdilwpzqa.supabase.co/rest/v1/holdet?select=*";
+
+// Public API key fra Supabase
+const key =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpzaGp0dXZlamhpamRpbHdwenFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NDM5MzcsImV4cCI6MjA5NDIxOTkzN30.K5DSv_K9Q_b_tWsWBH7rZ_zWF_ycq8M4HGwAk_X8oOI";
+
+// Sender API key med requesten så vi får adgang til data
+const options = {
+  headers: {
+    apikey: key,
+  },
+};
+
+// Henter data fra Supabase og konverterer svaret til JSON
+const data = await fetch(url, options).then((res) => res.json());
+console.log(data);
+
+// definerer de forskellige grupper og deres titler, så vi kan vise dem senere i vores UI
+// Opretter en konstant med navnet gruppeTitler.
+// Record<number, string> er typescript der fortæller at keys er tal og value skal være tekst
+// så gruppen skal være et tal, navnet på gruppen skal være tekst
+// eksempel: "1: Bestyrelsen"
+const gruppeTitler: Record<number, string> = {
+  1: "Bestyrelsen",
+  2: "Ansatte",
+  3: "Frivillig-koordinatorer",
+  4: "Kernefrivillige",
+};
+
+// Samler personer i grupper ud fra deres gruppe-nummer
+const grupperedePersoner = data.reduce((acc: any, person: any) => {
+  const gruppe = person.gruppe;
+
+  if (!acc[gruppe]) {
+    acc[gruppe] = [];
+  }
+
+  acc[gruppe].push(person);
+
+  return acc;
+}, {});
+---
+
+{
+  // gennemgår grupperne og viser dem på hjemmesiden
+  Object.entries(grupperedePersoner).map(([gruppe, personer]: [string, any]) => (
+    <section class='mx-auto mb-4 max-w-230 px-4'>
+      <div class='grid grid-cols-2 gap-3 md:grid-cols-3'>
+        {/* Viser gruppens titel-kort */}
+        <AnsatJob title={gruppeTitler[Number(gruppe)]} />
+
+        {/* Viser alle personer i gruppen */}
+        {personer.map((person: any) => (
+          <AnsatKort person={person} />
+        ))}
+      </div>
+    </section>
+  ))
+}

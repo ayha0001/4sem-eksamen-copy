@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroLille from "../components/generelt/HeroLille.astro";
+import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import Deler from "../components/generelt/Deler.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import BilledeTekst from "../components/afsnit/BilledeTekst.astro";
+import DelerCitat from "../components/forside/DelerCitat.astro";
+import DelerStreg from "../components/generelt/DelerStreg.astro";
+import ProjektSektion from "../components/afsnit/ProjektSektion.astro";
+import VideoKort from "../components/julegaveindsamling/VideoKort.astro";
+import DelerGraa from "../components/generelt/DelerGraa.astro";
+import IkonKort from "../components/afsnit/IkonKort.astro";
+import Taeller from "../components/forside/Taeller.astro";
+---
+
+<Layout
+  pagetitle="Julegaveindsamling"
+  description="Læs om Hjælp Din Næstes julegaveindsamling og hvordan frivillige, donationer og fællesskab skaber en varmere jul for hjemløse."
+>
+  <HeroLille
+    titel="Julegaveindsamling"
+    billede="/assets/img/jul-hero.webp"
+    imageAlt="Julegaver indsamlet til hjemløse gennem Hjælp Din Næste"
+    farve="text-background1"
+    billedePlacering="50% 45%"
+  />
+  <Deler ws="m" />
+
+  <TekstBillede
+    title="Sammen skaber vi julen"
+    paragraphs={[
+      "Julen er en social tid, hvor de mest udsatte nemt kan føle sig ekskluderede og ensomme.",
+      "Hvert år står vores frivillige for at indsamle tusindvis af gaver til de hjemløse i Danmark. Arbejdet består i at organisere, indpakke og distribuere gaver. Vi indsamler ønskelister fra samtlige herberger vi indsamler til.",
+      "Det er et kæmpe stort arbejde, og uden vores 92 frivilliges enorme arbejde har det aldrig kunnet være muligt for os hvert år at kunne bringe så meget kærlighed ud til hele landet.",
+    ]}
+    image="/assets/img/jul-2.webp"
+    imageAlt="Kassevis af julegaver og julekort til uddeling"
+    caption="Kassevis af julegaver og julekort til uddeling"
+    imageClass="h-120 w-full object-cover object-top"
+  />
+
+  <Deler ws="m" />
+
+  <DelerGraa>
+    <div class="mx-auto max-w-lg px-4">
+      <img
+        src="/assets/grafik/gave.svg"
+        alt="Julegave"
+        class="mx-auto mb-4 h-18 w-20"
+      />
+      <Taeller
+        tekst1="Indsamlet og uddelt"
+        nummer={2500}
+        tekst2="julegaver i 2025"
+        underline={true}
+        textColor="text-background1"
+      />
+    </div>
+  </DelerGraa>
+
+  <Deler ws="m" />
+
+  <BilledeTekst
+    title="En julegave, med et sødt julekort"
+    paragraphs={[
+      "En julegave, med et sødt julekort givet over en hyggesnak, kan være med til at give en varmere jul. Både i form af hvad gaven selv kan indeholde, men i den grad også gennem den personlige relation der ligger i en nænsomt indpakket gave samt den betænksomhed der ligger i et kort. De hjemløse fortjener en julegave og de fortjener kærlighed frem for ensomhed.",
+      "I julen 2025 brugte vi lidt over 256.000 kr. fra medlemsmidler, mobile pay donationer og virksomheder på julegaver til de hjemløse i Danmark og det har vi gjort takket være alle jer der har doneret.",
+      "Gennemsigtighed er og bliver en af vores største værdier som NGO, så selvfølgelig skal I vide hvor mange penge vi har brugt.",
+      "Udover dette har vi omfordelt en rigtig stor værdi af alt det som I selv har medbragt af gaver og måske vigtigst af alt – alle de +2000 julekort som I har brugt timevis på at skrive",
+    ]}
+    image="/assets/img/jul-extra.webp"
+    imageAlt="Julegaver og julekort til uddeling, skrevet og doneret fra jer"
+    caption="Julegaver og julekort til uddeling, skrevet og doneret fra jer"
+  />
+  <Deler ws="m" />
+  <DelerCitat
+    quote="Sådan nogle gaver har jeg aldrig fået før i hele mit liv. Ikke engang af min familie. Tusind tak for det."
+    source="Citat fra hjemløs"
+  />
+
+  <Deler ws="m" />
+
+  <VideoKort />
+  <Deler ws="m" />
+
+  <DelerStreg src="/assets/grafik/divider_grey.svg" />
+
+  <Deler ws="s" />
+
+  <ProjektSektion columns={2} />
+
+  <Deler ws="m" />
+
+  <FooterMedlem />
+</Layout>

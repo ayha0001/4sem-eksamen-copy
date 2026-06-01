@@ -10,6 +10,12 @@ interface Props {
 
   // gør det muligt at ændre tekstfarve
   textColor?: string;
+
+  // ikon er valgfrit
+  billede?: string;
+  imageAlt?: string;
+  imageSize?: string;
+  imageClass?: string;
 }
 
 // props
@@ -21,11 +27,16 @@ const {
 
   // standard tekstfarve
   textColor = "text-secondary",
+  billede,
+  imageAlt,
+  imageSize = "h-16 w-16",
+  imageClass = "",
 } = Astro.props;
 ---
 
 <!-- wrapper -->
 <div class={`flex h-full flex-col text-center ${textColor}`}>
+  {billede && <img src={billede} alt={imageAlt ?? tekst2} class={`mx-auto my-2 ${imageSize} ${imageClass} object-contain`} />}
   <!-- øverste tekst -->
   <p class='text-m-p-big md:text-p-big mb-2'>
     {tekst1}

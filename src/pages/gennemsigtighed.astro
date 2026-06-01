@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroLille from "../components/generelt/HeroLille.astro";
 import FooterMedlem from "../components/generelt/FooterMedlem.astro";
 import Deler from "../components/generelt/Deler.astro";
+import TalSektion from "../components/gennemsigtighed/TalSektion.astro";
 import TekstBillede from "../components/afsnit/TekstBillede.astro";
 import BilledeTekst from "../components/afsnit/BilledeTekst.astro";
 import DelerGraa from "../components/generelt/DelerGraa.astro";
@@ -10,20 +11,20 @@ import IkonKort from "../components/afsnit/IkonKort.astro";
 ---
 
 <Layout
-  pagetitle="Gennemsigtighed"
-  description="Se hvordan Hjælp Din Næste bruger donationer, arbejder med åbenhed og deler regnskaber, vedtægter og dokumentation."
+  pagetitle='Gennemsigtighed'
+  description='Se hvordan Hjælp Din Næste bruger donationer, arbejder med åbenhed og deler regnskaber, vedtægter og dokumentation.'
 >
   <HeroLille
-    titel="Gennemsigtighed"
-    billede="/assets/img/genm-hero.webp"
-    imageAlt="Herobillede om gennemsigtighed i Hjælp Din Næstes arbejde"
-    farve="text-background1"
-    billedePlacering="40% 35%"
+    titel='Gennemsigtighed'
+    billede='/assets/img/genm-hero.webp'
+    imageAlt='Herobillede om gennemsigtighed i Hjælp Din Næstes arbejde'
+    farve='text-background1'
+    billedePlacering='40% 35%'
   />
-  <Deler ws="m" />
+  <Deler ws='m' />
 
   <TekstBillede
-    title="Historien bag"
+    title='Historien bag'
     paragraphs={[
       "Gennemsigtighed har altid været en grundsten i vores arbejde. Vi ønsker, at du som donor ikke blot håber, men ved, hvordan dine penge bliver brugt - helt ned i detaljen. Hvad går til mennesker i udsatte livssituationer? Hvad går til drift? Og hvorfor er begge dele nødvendige?",
       "De første 2,5 år arbejdede vi alle frivilligt. Snorre arbejdede fuldtid uden andet arbejde, mens Daniel og Alfred studerede ved siden af. Snorre investerede hele sin opsparing i projektet.",
@@ -31,107 +32,99 @@ import IkonKort from "../components/afsnit/IkonKort.astro";
       "I september 2022 begyndte vi derfor - for første gang – at udbetale løn til os alle tre, svarende til 8 timer om ugen. Efter tre år blev det hævet til 16 timer ugentligt.",
       "Her på billedet ser du vores lønseddel som gjorde det muligt i 2025 at gå fra 24.000 til 34.000 i løn. Efter 5 års arbejde med tusindvis af interessetimer",
     ]}
-    image="/assets/img/genm-1.webp"
-    imageAlt="Print af vores første lønseddel"
-    caption="Print af vores første lønseddel"
-    imageClass="w-full object-cover mt-10"
+    image='/assets/img/genm-1.webp'
+    imageAlt='Print af vores første lønseddel'
+    caption='Print af vores første lønseddel'
+    imageClass='w-full object-cover mt-10'
   />
-  <Deler ws="m" />
+  <Deler ws='m' />
 
-  <Deler ws="m" />
+  <Deler ws='m' />
 
   <DelerGraa>
-    <div class="mx-auto grid max-w-230 grid-cols-1 gap-6 px-4 md:grid-cols-3">
+    <div class='mx-auto grid max-w-230 grid-cols-1 gap-6 px-4 md:grid-cols-3'>
       <!-- overskrift -->
-      <h2
-        class="font-visuals text-m-title1 md:text-visuals text-background1 -mb-2 text-center md:col-span-3"
-      >
-        Se gennemsigtihed i vores
-      </h2>
+      <h2 class='font-visuals text-m-title1 md:text-visuals text-background1 -mb-2 text-center md:col-span-3'>Se gennemsigtihed i vores</h2>
 
       <IkonKort
-        billede="/assets/grafik/hjerte-fyld-rød.svg"
-        titel="Årsregnskab"
-        tekst=""
-        textColor="text-background1"
-        link="/assets/pdf/aarsrapport-2024-Hjaelp-din-naeste-underskrevet.pdf"
-        linkText="Download her"
+        billede='/assets/grafik/hjerte-fyld-rød.svg'
+        titel='Årsregnskab'
+        tekst=''
+        textColor='text-background1'
+        link='/assets/pdf/aarsrapport-2024-Hjaelp-din-naeste-underskrevet.pdf'
+        linkText='Download her'
       />
 
       <IkonKort
-        billede="/assets/grafik/hjerte-fyld-rød.svg"
-        titel="Indsamlingsregnskab"
-        tekst=""
-        textColor="text-background1"
-        link="/assets/pdf/Hjaelp_din_naeste_-_Indsamlingsregnskab_2023-24.pdf"
-        linkText="Download her"
+        billede='/assets/grafik/hjerte-fyld-rød.svg'
+        titel='Indsamlingsregnskab'
+        tekst=''
+        textColor='text-background1'
+        link='/assets/pdf/Hjaelp_din_naeste_-_Indsamlingsregnskab_2023-24.pdf'
+        linkText='Download her'
       />
 
       <IkonKort
-        billede="/assets/grafik/hjerte-fyld-rød.svg"
-        titel="Vedtægter"
-        tekst=""
-        textColor="text-background1"
-        link="/assets/pdf/VEDTAeGTER-FOR-FORENINGEN-2024-1-1.pdf"
-        linkText="Download her"
+        billede='/assets/grafik/hjerte-fyld-rød.svg'
+        titel='Vedtægter'
+        tekst=''
+        textColor='text-background1'
+        link='/assets/pdf/VEDTAeGTER-FOR-FORENINGEN-2024-1-1.pdf'
+        linkText='Download her'
       />
     </div>
   </DelerGraa>
 
-  <Deler ws="m" />
+  <Deler ws='m' />
 
-  <Deler ws="m" />
-
-  <h2
-    class="font-body text-m-title2 text-secondary lg:text-title2 text-center font-semibold"
-    data-aos="fade-right"
-    data-aos-duration="500"
-  >
+  <h2 class='font-body text-m-title2 text-secondary lg:text-title2 text-center font-semibold' data-aos='fade-right' data-aos-duration='500'>
     Hvordan bruger vi dine midler i dag?
   </h2>
 
-  <Deler ws="s" />
+  <Deler ws='s' />
 
   <TekstBillede
-    title=""
+    title=''
     paragraphs={[
       "I oktober 2025, efter en større bevilling fra Social- og Boligstyrelsen på 857.000 kr., blev det muligt at udbetale en reel og ansvarlig fuldtidsløn. Bevillingen dækker Olivia samt en af vores studentermedhjælpere og sikrer, at viden, relationer og kvalitet forbliver i organisationen.",
       "Organisationens samlede månedlige lønomkostninger udgør ca. 175.000 kr., hvoraf omtrent en tredjedel finansieres gennem fonde og puljer. 6 ud af organisationens 8 ansatte har projektarbejde som deres primære ansvarsområde, hvilket vil sige, at du betaler for, at vi kan være ude fysisk på gaden, eller hos vores indflyttere og hjælpe der, hvor det gælder. Vores mål er stadig, at i fremtiden skal 100% af vores løn være dækket af fondsmidler.",
     ]}
-    image="/assets/img/genm-2.webp"
-    imageAlt="Frivilligholdet på vej på uddeling"
-    caption="Frivilligholdet på vej på uddeling"
-    imageClass="w-full object-cover"
+    image='/assets/img/genm-2.webp'
+    imageAlt='Frivilligholdet på vej på uddeling'
+    caption='Frivilligholdet på vej på uddeling'
+    imageClass='w-full object-cover'
   />
-  <Deler ws="s" />
+  <Deler ws='m' />
+  <TalSektion />
+  <Deler ws='m' />
   <BilledeTekst
-    headingTag="h3"
-    title="Hjælp, der kan mærkes"
+    headingTag='h3'
+    title='Hjælp, der kan mærkes'
     paragraphs={[
       "I dag bruger vi hver måned 120.000 kr. på direkte virke – møbler, lamper, billeder, køleskab til indflytninger, soveposer og nødvendigt udstyr til gadeplansuddelinger.",
       "David, Maiken og Snorre står for vores uddelinger, hvor vi sidste år omfordelte for 771.000 kr tøj og sovegrej. Olivia og Daniel sidder med Projekt Nyt Hjem og organiserer 2-4 indflytninger for tidligere hjemløse hver måned. ",
     ]}
-    image="/assets/img/genm-3.webp"
-    imageAlt="En stor levering af soveposer"
-    caption="En stor levering af soveposer"
-    imageClass="h-72 w-full object-cover lg:h-96"
+    image='/assets/img/genm-3.webp'
+    imageAlt='En stor levering af soveposer'
+    caption='En stor levering af soveposer'
+    imageClass='h-72 w-full object-cover lg:h-96'
     reverseMobil={true}
   />
-  <Deler ws="s" />
+  <Deler ws='s' />
   <TekstBillede
-    headingTag="h3"
-    title="Din støtte, vores ansvar"
+    headingTag='h3'
+    title='Din støtte, vores ansvar'
     paragraphs={[
       "For os handler arbejdet ikke kun om hvad vi gør, men hvordan vi gør det. Vi tror på, at langsigtet social forandring kræver stabile rammer, professionelle kræfter og en økonomi, der hænger sammen. Når du støtter os, støtter du derfor både direkte hjælp og en organisation, der er bygget til at holde – uden skjulte dagsordener og uden sorte huller i regnskabet.",
       "Vi lover ikke, at hver krone løser alle problemer. Men vi lover, at hver krone bliver behandlet med respekt, ansvarlighed og fuld gennemsigtighed. Og at du altid kan følge med i, hvordan din støtte bliver omsat til reel forskel for mennesker, der har brug for det.",
     ]}
-    image="/assets/img/genm-4.webp"
-    imageAlt="Smil på uddeling ved Christianshavn"
-    caption="Smil på uddeling ved Christianshavn"
-    imageClass="h-72 w-full object-cover lg:h-96"
+    image='/assets/img/genm-4.webp'
+    imageAlt='Smil på uddeling ved Christianshavn'
+    caption='Smil på uddeling ved Christianshavn'
+    imageClass='h-72 w-full object-cover lg:h-96'
   />
 
-  <Deler ws="m" />
+  <Deler ws='m' />
 
   <FooterMedlem />
 </Layout>

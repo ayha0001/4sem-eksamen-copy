@@ -58,30 +58,52 @@
 </div>
 
 <script>
+  // henter de elementer der indgår i før/efter-slideren
   const sliderHandle = document.getElementById("slider-handle");
   const leftImage = document.getElementById("left-image");
   const rightImage = document.getElementById("right-image");
+  const sliderContainer = document.querySelector(".slider-container");
 
-  let isDragging = false;
+  // sikrer at elementerne findes før scriptet kører
+  if (sliderHandle && leftImage && rightImage && sliderContainer) {
+    
+    // holder styr på om brugeren trækker i slideren
+    let isDragging = false;
 
-  sliderHandle.addEventListener("mousedown", () => {
-    isDragging = true;
-  });
+    // aktiverer slideren når brugeren klikker på håndtaget
+    sliderHandle.addEventListener("mousedown", () => {
+      isDragging = true;
+    });
 
-  window.addEventListener("mouseup", () => {
-    isDragging = false;
-  });
+    // stopper trækket når museknappen slippes
+    window.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
 
-  window.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
+    // opdaterer sliderens position mens brugeren trækker
+    window.addEventListener("mousemove", (e) => {
+      
+      // stopper funktionen hvis slideren ikke trækkes
+      if (!isDragging) return;
 
-    const sliderContainer = document.querySelector(".slider-container");
-    const rect = sliderContainer.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+      // finder sliderens placering og størrelse på siden
+      const rect = sliderContainer.getBoundingClientRect();
 
-    leftImage.style.width = `${percentage}%`;
-    rightImage.style.width = `${100 - percentage}%`;
-    sliderHandle.style.left = `${percentage}%`;
-  });
+      // beregner musens position inde i slideren
+      const offsetX = e.clientX - rect.left;
+
+      // omregner positionen til en procentværdi mellem 0 og 100
+      const percentage = Math.max(
+        0,
+        Math.min(100, (offsetX / rect.width) * 100)
+      );
+
+      // justerer bredden på billederne så sammenligningen opdateres
+      leftImage.style.width = `${percentage}%`;
+      rightImage.style.width = `${100 - percentage}%`;
+
+      // flytter håndtaget til den aktuelle position
+      sliderHandle.style.left = `${percentage}%`;
+    });
+  }
 </script>

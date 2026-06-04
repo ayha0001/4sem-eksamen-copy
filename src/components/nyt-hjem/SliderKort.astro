@@ -50,33 +50,55 @@
   </div>
 
   <script>
-    const sliderHandle = document.getElementById("slider-handle") as HTMLElement | null;
-    const leftImage = document.querySelector(".left-image") as HTMLElement | null;
-    const rightImage = document.querySelector(".right-image") as HTMLElement | null;
-    const sliderContainer = document.querySelector(".slider-container") as HTMLElement | null;
+  // henter de elementer der indgår i før/efter-slideren
+  const sliderHandle = document.getElementById("slider-handle") as HTMLElement | null;
+  const leftImage = document.querySelector(".left-image") as HTMLElement | null;
+  const rightImage = document.querySelector(".right-image") as HTMLElement | null;
+  const sliderContainer = document.querySelector(".slider-container") as HTMLElement | null;
 
-    if (sliderHandle && leftImage && rightImage && sliderContainer) {
-      let isDragging = false;
+  // sikrer at alle nødvendige elementer findes før slideren aktiveres
+  if (sliderHandle && leftImage && rightImage && sliderContainer) {
+    
+    // holder styr på om brugeren aktuelt trækker i håndtaget
+    let isDragging = false;
 
-      sliderHandle.addEventListener("mousedown", () => {
-        isDragging = true;
-      });
+    // aktiverer slideren når brugeren klikker på håndtaget
+    sliderHandle.addEventListener("mousedown", () => {
+      isDragging = true;
+    });
 
-      window.addEventListener("mouseup", () => {
-        isDragging = false;
-      });
+    // stopper trækket når museknappen slippes
+    window.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
 
-      window.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
+    // opdaterer sliderens position mens brugeren trækker
+    window.addEventListener("mousemove", (e) => {
 
-        const rect = sliderContainer.getBoundingClientRect();
-        const offsetX = e.clientX - rect.left;
-        const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+      // stopper funktionen hvis brugeren ikke trækker i slideren
+      if (!isDragging) return;
 
-        leftImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
-        rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
-        sliderHandle.style.left = `${percentage}%`;
-      });
-    }
-  </script>
+      // finder sliderens placering og bredde på siden
+      const rect = sliderContainer.getBoundingClientRect();
+
+      // beregner musens position inde i slideren
+      const offsetX = e.clientX - rect.left;
+
+      // omregner positionen til en procentværdi mellem 0 og 100
+      const percentage = Math.max(
+        0,
+        Math.min(100, (offsetX / rect.width) * 100)
+      );
+
+      // beskærer venstre billede ud fra sliderens position
+      leftImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+
+      // beskærer højre billede modsat, så billederne kan sammenlignes
+      rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+
+      // flytter håndtaget til den aktuelle position
+      sliderHandle.style.left = `${percentage}%`;
+    });
+  }
+</script>
 </section>
